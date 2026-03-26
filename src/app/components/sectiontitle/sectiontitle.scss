@@ -1,0 +1,33 @@
+@use '../../../variables.scss' as *;
+
+.sectiontitle {
+    text-align: center;
+    animation: slide-up-fade-in 0.8s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 80%;
+
+    &__title {
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 1.2;
+        background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-color) 100%);
+        background-clip: text;
+        color: transparent;
+        letter-spacing: -0.02em;
+
+        @media (max-width: $mobile) {
+            font-size: 2rem;
+        }
+    }
+
+    &__description {
+        font-size: 1.2rem;
+        color: var(--grayscale-40);
+        max-width: 50rem;
+        margin: 0 auto;
+
+        @media (max-width: $mobile) {
+            font-size: 1rem;
+        }
+    }
+}

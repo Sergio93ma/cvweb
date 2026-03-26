@@ -1,0 +1,12 @@
+<section class="summary" #summarySection>
+    @for (s of summary(); track $index;) {
+    <div class="summary__technology">
+        <div class="summary__technology-number">
+            @if (s.before) {<span class="before">{{ s.before }}</span>}
+            <span>{{ summaryValues[$index] }}</span>
+            @if (s.after) {<span class="after">{{ s.after }}</span>}
+        </div>
+        <div class="summary__technology-text">{{ s.text }}</div>
+    </div>
+    }
+</section>

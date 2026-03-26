@@ -1,0 +1,42 @@
+{
+    "common": {
+        "years": "years"
+    },
+    "home": {
+        "title": "Frontend",
+        "titleHighlight": "Engineer",
+        "subtitle": "High-Performance Frontends. Engineered Right.",
+        "description": "Frontend Developer with 9+ years of professional experience building scalable web applications with Angular, AEM and modern JavaScript ecosystem. Focused on performance, maintainability and real business impact.",
+        "downloadCV": "Download CV",
+        "viewProjects": "View Selected Projects",
+        "scrollToExplore": "Scroll to explore"
+    },
+    "summary": {
+        "professionalExperience": "Professional Experience",
+        "yearsBuilding": "Years Building Web Projects",
+        "projectsDelivered": "Web Projects Delivered",
+        "productionTechs": "Production Technologies"
+    },
+    "skills": {
+        "title": "Technical Skills"
+    },
+    "experience": {
+        "careerTimeline": "Career Timeline",
+        "present": "Present"
+    },
+    "education": {
+        "title": "Academic Records",
+        "location": "Location",
+        "institution:": "Institution",
+        "dates:": "Dates"
+    },
+    "databox": {
+        "title": "Performance is not optional. It's structural.",
+        "description": "I design and build frontend architectures where performance is a first-class concern. From bundle strategy to rendering optimization, every decision is intentional and measurable.",
+        "downloadCV": "Download CV",
+        "lcp": "Real LCP",
+        "lighthouse": "Lighthouse",
+        "bundle": "Bundle",
+        "dependencies": "Dependencies"
+    }
+}

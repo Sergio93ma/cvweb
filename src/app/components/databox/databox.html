@@ -1,0 +1,22 @@
+<section class="databox" #databoxSection>
+    <div class="databox__text">
+        <h3 class="title">{{ ts.translate('databox.title')() }}</h3>
+        <p class="description">{{ ts.translate('databox.description')() }}</p>
+        <a href="assets/CV/CV_Sergio_Martin_2026.pdf" download class="button-solid">
+            <span>{{ ts.translate('home.downloadCV')() }}</span>
+            <div class="button__bg"></div>
+        </a>
+    </div>
+    <div class="databox__datas">
+        @for (d of databox(); track $index) {
+        <div class="databox__datas-data">
+            <div class="data__value">
+                @if (d.before) {<span class="before">{{ d.before }}</span>}
+                <span class="number">{{ databoxValues[$index] }}</span>
+                @if (d.after) {<span class="after">{{ d.after }}</span>}
+            </div>
+            <div class="data__text">{{d.text}}</div>
+        </div>
+        }
+    </div>
+</section>

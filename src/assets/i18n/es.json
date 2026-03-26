@@ -1,0 +1,42 @@
+{
+    "common": {
+        "years": "años"
+    },
+    "home": {
+        "title": "Ingeniero",
+        "titleHighlight": "Frontend",
+        "subtitle": "Frontends de Alto Rendimiento. Bien Construidos.",
+        "description": "Desarrollador Frontend con más de 9 años de experiencia profesional construyendo aplicaciones web escalables con Angular, AEM y ecosistemas modernos de JavaScript. Enfocado en rendimiento, mantenibilidad e impacto real en el negocio.",
+        "downloadCV": "Descargar CV",
+        "viewProjects": "Ver Proyectos Seleccionados",
+        "scrollToExplore": "Explora más abajo"
+    },
+    "summary": {
+        "professionalExperience": "Años de Experiencia Profesional",
+        "yearsBuilding": "Años Desarrollando Proyectos Web",
+        "projectsDelivered": "Proyectos Web Entregados",
+        "productionTechs": "Tecnologías en Producción"
+    },
+    "skills": {
+        "title": "Habilidades Técnicas"
+    },
+    "experience": {
+        "careerTimeline": "Trayectoria Profesional",
+        "present": "Actualidad"
+    },
+    "education": {
+        "title": "Historial académico",
+        "location": "Localización",
+        "institution:": "Instución",
+        "dates:": "Fechas"
+    },
+    "databox": {
+        "title": "El rendimiento no es opcional. Es estructural.",
+        "description": "Diseño y construyo arquitecturas frontend donde el rendimiento es una prioridad de primer nivel. Desde la estrategia de bundle hasta la optimización del renderizado, cada decisión es intencionada y medible.",
+        "downloadCV": "Descargar CV",
+        "lcp": "LCP real",
+        "lighthouse": "Lighthouse",
+        "bundle": "Bundle",
+        "dependencies": "Dependencias"
+    }
+}

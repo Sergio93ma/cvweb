@@ -1,0 +1,56 @@
+@use '../../../variables' as *;
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @media (max-width: $mobile) {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    &__technology {
+        flex: 1 1 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 2rem 0;
+        border-right: 1px solid var(--primary-color);
+
+        &:last-child {
+            border-right: none;
+        }
+
+        @media (max-width: $desktop) {
+            flex: 1 1 50%;
+
+            &:nth-child(2n) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: $mobile) {
+            flex: auto;
+            border: none;
+        }
+
+        &-number {
+            span {
+                font-weight: 700;
+                font-size: 4.5rem;
+                line-height: 1;
+            }
+        }
+        &-text {
+            max-width: 7.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.2rem;
+            color: var(--grayscale-30);
+        }
+    }
+}

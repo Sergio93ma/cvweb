@@ -1,0 +1,129 @@
+@use '../../../variables.scss' as *;
+
+.education {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @media (max-width: $mobile) {
+        gap: 3rem;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        font-family:
+            JetBrains Mono,
+            monospace;
+        cursor: default;
+
+        &-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+
+            @media (max-width: $mobile) {
+                font-size: 1.15rem;
+            }
+
+            .fa-folder {
+                color: var(--primary-color);
+            }
+
+            .fa-folder-open {
+                display: none;
+                color: var(--primary-color);
+            }
+
+            .title {
+                font-weight: 700;
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        &-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-left: 3.5rem;
+            margin-top: 0.75rem;
+            max-height: 0px;
+            overflow: hidden;
+            border-left: 2px solid rgba(19, 109, 236, 0.2);
+            padding-left: 1.5rem;
+            opacity: 0;
+            transition: all 500ms var(--cubic-normal);
+
+            @media (max-width: $mobile) {
+                margin-left: 0.7rem;
+                gap: 1rem;
+            }
+
+            .detail {
+                display: flex;
+                gap: 1rem;
+
+                @media (max-width: $mobile) {
+                    flex-wrap: wrap;
+                    row-gap: 0.2rem;
+
+                    .content {
+                        flex: 1 0 100%;
+                    }
+                }
+
+                .arrow {
+                    color: var(--primary-color);
+                }
+                &.dates {
+                    .content {
+                        color: var(--secondary-40);
+                    }
+                }
+                &.institution {
+                    .content {
+                        color: var(--grayscale-40);
+                    }
+                }
+                &.location {
+                    .content {
+                        border-radius: var(--border-radius);
+                        background-color: var(--grayscale-90);
+                        padding: 0.125rem 0.5rem;
+                        color: var(--primary-color);
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .education__item-header {
+                .fa-folder {
+                    display: none;
+                }
+                .fa-folder-open {
+                    display: block;
+                }
+            }
+            .education__item-details {
+                max-height: 10rem;
+                opacity: 1;
+
+                @media (max-width: $mobile) {
+                    max-height: 12rem;
+                }
+            }
+        }
+    }
+}

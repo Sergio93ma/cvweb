@@ -1,0 +1,86 @@
+@use '../../../variables.scss' as *;
+
+.databox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    padding: 3rem;
+    color: var(--primary-10);
+    box-shadow: var(--floating-shadow);
+    transform: var(--floating-transform);
+
+    @supports (animation-timeline: view()) {
+        animation: floating-enter ease-in forwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+    }
+
+    @media (max-width: $tablet) {
+        padding: 2rem;
+        grid-template-columns: 1fr;
+    }
+    &__text {
+        flex: 1 0 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .title {
+            font-weight: 900;
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        .description {
+            font-size: 1.125rem;
+            line-height: 1.625;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &__datas {
+        flex: 1 0 50%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+
+        &-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.25rem;
+            border-radius: var(--border-radius);
+            background-color: rgb(255 255 255 / 0.1);
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+
+            .data__value {
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+                font-weight: 900;
+            }
+            .data__text {
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--primary-30);
+                
+                @media (max-width: $mobile) {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+@keyframes floating-enter {
+    from {
+        transform: var(--floating-transform);
+    }
+    to {
+        transform: perspective(3000px) rotateX(0deg) translateZ(0px);
+    }
+}

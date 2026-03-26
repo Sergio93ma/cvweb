@@ -1,0 +1,35 @@
+<section class="skills">
+    <app-sectiontitle [title]="ts.translate('experience.careerTimeline')()"></app-sectiontitle>
+    <div class="skills__container">
+        <div class="skills__categories">
+            @for (c of skills(); track $index) {
+            <div class="category" [class.active]="activeIndex() === $index">
+                <div class="category__header" (click)="toggle($index)">
+                    <h3>{{ c.name }}</h3>
+                </div>
+                <div class="category__skills">
+                    @for (s of c.skills; track $index) {
+                    <div class="skill">
+                        <h4 class="skill__title">
+                            @if(s.icon) {
+                            <i [class]="s.icon"></i>
+                            }
+                            {{ s.name }}
+                        </h4>
+                        <div class="skill__more">
+                            <div class="skill__more-description">{{ s.description }}</div>
+                            <div class="skill__more-experience">Exp: {{ s.experience }} {{ ts.translate('common.years')() }}</div>
+                        </div>
+                        <ul class="skill__progress">
+                            @for (i of [].constructor(5); track $index) {
+                            <li class="skill__progress-bar" [class.fill]="$index <= (s.knowledge-1)"></li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

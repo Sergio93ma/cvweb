@@ -1,0 +1,224 @@
+@use '../../../variables.scss' as *;
+
+.experience {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @media (max-width: $mobile) {
+        gap: 3rem;
+    }
+
+    &__timecursor {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0px;
+        top: 0px;
+        left: 0%;
+        width: 1px;
+        z-index: 30;
+        background-color: var(--primary-color);
+        box-shadow: 0 0 10px var(--primary-color);
+
+        &-triangle {
+            position: absolute;
+            left: -0.375rem;
+            top: -0.25rem;
+            height: 0.75rem;
+            width: 0.75rem;
+            transform: rotate(45deg);
+            background-color: var(--primary-color);
+        }
+
+        &[data-animated='true'] {
+            animation: timecursor-move 1.2s linear forwards;
+        }
+    }
+
+    &__timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 1rem 0;
+
+        &-year_axis {
+            display: flex;
+            justify-content: space-between;
+            color: var(--grayscale-30);
+            margin-left: -1rem;
+            margin-right: -1rem;
+            font-size: 0.8rem;
+            font-family:
+                JetBrains Mono,
+                monospace;
+
+            @media (max-width: $mobile) {
+                display: none;
+
+                span:nth-child(odd) {
+                    display: none;
+                }
+            }
+        }
+
+        &-line {
+            .expitem {
+                border-radius: var(--border-radius);
+                border-width: 1px;
+                border-color: rgb(255 255 255 / 0.1);
+                background-color: var(--grayscale-70);
+                padding: 1rem 1.4rem;
+                transition: all var(--time-fast) var(--cubic-normal);
+                background: linear-gradient(
+                    90deg,
+                    var(--grayscale-70) 0%,
+                    var(--grayscale-60) 100%
+                );
+                border-left: 3px solid var(--accent);
+                clip-path: inset(0 100% 0 0);
+
+                @media (max-width: $mobile) {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                    animation-delay: 0s !important;
+                    animation-duration: 1.2s !important;
+                }
+
+                &[data-animated='true'] {
+                    animation: expand-timeline-bar 1.2s linear forwards;
+
+                    .expitem__card {
+                        opacity: 1;
+                    }
+                }
+
+                &__card {
+                    list-style-type: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    opacity: 0;
+                    cursor: pointer;
+                    transition: opacity var(--time-fast) var(--cubic-normal) 0.3s;
+
+                    &-content {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.1rem;
+
+                        .title {
+                            font-size: 1.2rem;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: -0.05em;
+                        }
+                        .company {
+                            color: var(--primary-color);
+                        }
+                    }
+
+                    i {
+                        transition-duration: transform var(--time-fast) var(--cubic-normal);
+                    }
+                }
+
+                &__details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    margin-top: 1rem;
+
+                    .dates {
+                        font-family:
+                            JetBrains Mono,
+                            monospace;
+                    }
+
+                    &-items {
+                        list-style: none;
+                        margin: 0;
+                        padding-left: 1.3rem;
+                        color: var(--grayscale-20);
+                        font-family:
+                            JetBrains Mono,
+                            monospace;
+
+                        li {
+                            &::marker {
+                                content: '- ';
+                            }
+                        }
+                    }
+                    &-technologies {
+                        display: flex;
+                        gap: 1rem;
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+
+                        li {
+                            display: inline-flex;
+                            align-items: center;
+                            padding: 0.4rem 0.8rem;
+                            border-radius: 9999px;
+                            background: rgba(19, 109, 236, 0.15);
+                            color: var(--primary-50);
+                            font-size: 0.8rem;
+                            font-weight: 600;
+                            border: 1px solid rgba(19, 109, 236, 0.3);
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                            transition: all 0.3s ease;
+
+                            &:hover {
+                                background: rgba(19, 109, 236, 0.25);
+                                border-color: rgba(19, 109, 236, 0.5);
+                            }
+
+                            @media (max-width: $mobile) {
+                                padding: 0.35rem 0.7rem;
+                                font-size: 0.7rem;
+                            }
+                        }
+                    }
+                }
+
+                &:open {
+                    .expitem__card {
+                        i {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes timecursor-move {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0.8;
+    }
+    100% {
+        left: 100%;
+        opacity: 0.3;
+    }
+}
+
+@keyframes expand-timeline-bar {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}

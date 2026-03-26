@@ -1,0 +1,166 @@
+@use '../../../variables.scss' as *;
+
+.herobanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 6rem);
+    text-align: center;
+
+    @media (max-width: $tablet) {
+        height: calc(100vh - 2rem);
+    }
+
+    @supports (animation-timeline: view()) {
+        animation: fadeout-up ease-in forwards;
+        animation-timeline: scroll();
+        animation-range: 20vh 80vh;
+    }
+
+    &__content {
+        flex: 1 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+
+        @media (max-width: $mobile) {
+            gap: 1rem;
+        }
+
+        &-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid var(--primary-color);
+            background-color: rgb(19 109 236 / 0.05);
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(12px);
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: rgb(19, 109, 236);
+        }
+        &-title {
+            font-size: 120px;
+            line-height: 1;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+
+            @media (max-width: $mobile) {
+                font-size: 3.75rem;
+            }
+
+            .primary-gradient-text {
+                font-size: 124px;
+                color: transparent;
+                background-clip: text;
+                background-image: linear-gradient(to bottom, var(--primary-50), var(--primary-90));
+
+                @media (max-width: $mobile) {
+                    font-size: 62px;
+                }
+            }
+        }
+        &-titlesub {
+            font-size: 1.3rem;
+            color: var(--grayscale-20);
+            margin-top: -14px;
+
+            @media (max-width: $mobile) {
+                margin-top: 0;
+                max-width: 316px;
+            }
+        }
+        &-subtitle {
+            max-width: 50rem;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 300;
+            color: var(--grayscale-40);
+
+            @media (max-width: $mobile) {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            strong {
+                color: var(--text-primary);
+                font-style: italic;
+                font-weight: 500;
+            }
+        }
+        &-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            @media (max-width: $mobile) {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    }
+
+    &__scroll {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 1rem;
+
+        &-text {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--grayscale-40);
+        }
+        &-arrow {
+            position: relative;
+            height: 3rem;
+            width: 1px;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom, var(--primary-color), transparent);
+
+            & > div {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                height: 100%;
+                width: 100%;
+                animation: scroll-down 2s infinite;
+                background-color: var(--grayscale-10);
+            }
+        }
+    }
+}
+
+@keyframes fadeout-up {
+    to {
+        transform: scale(0.6) translateY(-10vh);
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}

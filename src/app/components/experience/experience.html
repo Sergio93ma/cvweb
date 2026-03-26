@@ -1,0 +1,44 @@
+<section class="experience">
+    <app-sectiontitle [title]="ts.translate('experience.careerTimeline')()"></app-sectiontitle>
+    <div class="experience__timeline" #experienceTimeline>
+        <div class="experience__timeline-year_axis">
+            @for (year of experiences_years(); track year) {
+            <span class="year">{{ year }}</span>
+            }
+        </div>
+        <div class="experience__timecursor">
+            <div class="experience__timecursor-triangle"></div>
+        </div>
+        @for (e of experiences(); track $index) {
+        <div class="experience__timeline-line">
+            <details class="expitem"
+                [style]="`margin-left: ${e.position.left}%; margin-right: ${e.position.right}%; animation-delay: ${e.position.delay}s; animation-duration: ${e.position.duration}s;`">
+                <summary class="expitem__card">
+                    <div class="expitem__card-content">
+                        <h2 class="title">{{ e.title }}</h2>
+                        <span class="company"><b>{{ e.company }}</b> — {{ e.location }}</span>
+                    </div>
+                    <i class="fa-solid fa-angle-down"></i>
+                </summary>
+                <div class="expitem__details">
+                    <small class="dates">
+                        {{ e.start.month | locale:e.start.year:'es' }} —
+                        @if(e.end) { {{ e.end.month | locale:e.end.year:'es' }}
+                        } @else { {{ ts.translate('experience.present')() }} }
+                    </small>
+                    <ul class="expitem__details-items">
+                        @for (i of e.items; track $index) {
+                        <li>{{ i }}</li>
+                        }
+                    </ul>
+                    <ul class="expitem__details-technologies">
+                        @for (t of e.technologies; track $index) {
+                        <li>{{ t }}</li>
+                        }
+                    </ul>
+                </div>
+            </details>
+        </div>
+        }
+    </div>
+</section>

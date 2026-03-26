@@ -1,1 +1,225 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'variables.scss' as *;
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+// ROUTERANIMATION
+.route-container {
+    view-transition-name: route-content;
+}
+
+::view-transition-old(route-content),
+::view-transition-new(route-content) {
+    animation-duration: 600ms;
+    animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(route-content) {
+    animation-name: slide-out-to-right;
+}
+
+::view-transition-new(route-content) {
+    animation-name: slide-in-from-left;
+}
+
+@keyframes slide-out-to-right {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+@keyframes slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// GENERAL
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: var(--text-primary);
+    background-color: var(--background-color);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--time-fast) var(--cubic-normal);
+
+    &:hover {
+        color: var(--primary-70);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+}
+
+small {
+    font-weight: 300;
+}
+
+// BUTTONS
+.button-solid,
+.button-liquid {
+    background-color: transparent;
+    background-image: none;
+    text-transform: none;
+    border: none;
+    appearance: button;
+    -webkit-appearance: button;
+    width: max-content;
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    transition: all var(--time-fast) var(--cubic-normal);
+
+    @media (max-width: $mobile) {
+        width: 100%;
+    }
+}
+.button-solid {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-10);
+    color: var(--text-contrast);
+
+    span {
+        position: relative;
+        z-index: 10;
+    }
+
+    &:hover {
+        background-color: var(--primary-30);
+        color: var(--grayscale-90);
+    }
+}
+
+.button-liquid {
+    border: 1px solid var(--grayscale-60);
+    color: var(--text-primary);
+
+    &:hover {
+        background-color: var(--overbg-color-t);
+        border-color: var(--grayscale-50);
+    }
+}
+
+// COMMONS
+.container {
+    max-width: 1280px;
+    padding: 6rem 0 15rem;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+
+    @media (max-width: $desktop) {
+        padding: 6rem 5rem;
+        max-width: unset;
+        width: 100vw;
+    }
+    @media (max-width: $tablet) {
+        padding: 2rem 1.5rem;
+        gap: 8rem;
+        position: fixed;
+        inset: 0;
+        overflow: auto;
+        mask-image: linear-gradient(
+            to bottom,
+            black calc(100% - 128px),
+            transparent calc(100% - 48px),
+            transparent 100%
+        );
+    }
+    @media (max-width: $tablet) {
+        padding: 2rem 2rem;
+        gap: 6rem;
+    }
+}
+
+body.light-theme {
+    .button-solid {
+        background-color: var(--primary-90);
+
+        &:hover {
+            background-color: var(--primary-70);
+        }
+    }
+    .education {
+        &__item {
+            &-details {
+                .detail {
+                    &.dates {
+                        .content {
+                            color: var(--secondary-70) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// COMMON ANIMATIONS
+@keyframes slide-up-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

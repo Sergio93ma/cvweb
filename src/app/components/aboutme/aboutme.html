@@ -1,0 +1,27 @@
+<section class="aboutme">
+    <div class="aboutme__presentation">
+        <div class="aboutme__presentation-photo">
+            <img src="assets/images/profile_photo.png">
+        </div>
+        <h1 class="aboutme__presentation-title">
+            <span>Sergio</span>
+            <span>Martín</span>
+            <span>Alonso</span>
+        </h1>
+        <div class="aboutme__presentation-subtitle">:: {{ ts.translate('home.senior_frontend_developer')() }}</div>
+        <div class="aboutme__presentation-buttons">
+            <a href="assets/CV/CV_Sergio_Martin_2026.pdf" download class="button-solid">
+                <span>{{ ts.translate('home.downloadCV')() }}</span>
+                <div class="button__bg"></div>
+            </a>
+            <button class="button-liquid" (click)="scrollTo('proyects')">
+                <span>{{ ts.translate('home.viewProjects')() }}</span>
+            </button>
+        </div>
+    </div>
+    <div class="aboutme__description">
+        <p>{{ ts.translate('home.description1')() }}</p>
+        <p>{{ ts.translate('home.description2')() }}</p>
+        <p>{{ ts.translate('home.description3')() }}</p>
+    </div>
+</section>

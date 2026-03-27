@@ -81,6 +81,7 @@ footer {
 
             &:checked + .slider {
                 &:before {
+                    transform: translateY(-1.8rem);
                     @media (max-width: $tablet) {
                         transform: translateX(1.8rem);
                     }
@@ -182,9 +183,7 @@ footer {
         }
     }
     .version {
-        font-family:
-            JetBrains Mono,
-            monospace;
+        font-family: 'JetBrains Mono', monospace;
         color: var(--grayscale-30);
         writing-mode: sideways-lr;
 

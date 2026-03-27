@@ -1,0 +1,54 @@
+<section class="proyects">
+    <app-sectiontitle [title]="ts.translate('proyects.title')()" [description]="ts.translate('proyects.description')()"></app-sectiontitle>
+    <div class="proyects__grid">
+        @for (p of proyects(); track $index) {
+        <div class="proyect" (click)="openProyect(p.id)">
+            <div class="proyect__image">
+                @if (p.type === 'confidential') {
+                <div class="confidential__overlay">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                }
+                <img [src]="'assets/images/proyects/'+p.id+'.png'">
+            </div>
+            <div class="proyect__body">
+                <h3 class="proyect__body-title">
+                    @if(p.icon) {<i [class]="p.icon"></i>&nbsp;}
+                    {{ p.title }}
+                </h3>
+                <p class="proyect__body-description">{{ p.description_short }}</p>
+                <div class="proyect__body-links">
+                    @if (p.url) {<a [href]="p.url"><i class="fa-solid fa-link"></i></a>}
+                    @if (p.github) {<a [href]="p.github"><i class="fa-brands fa-github"></i></a>}
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    @if (proyect) {
+    <div class="proyects__modal" (click)="closeProyect()">
+        <div class="proyect" (click)="$event.stopPropagation()">
+            <i class="fa-solid fa-xmark" (click)="closeProyect()"></i>
+            <h1 class="proyect__title">
+                @if(proyect.icon) {<i [class]="proyect.icon"></i>&nbsp;}
+                {{ proyect.title }}
+            </h1>
+            <div class="proyect__body">
+                <div class="proyect__body-left">
+                    <div class="proyect__image">
+                        @if (proyect.type === 'confidential') {
+                        <div class="confidential__overlay">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        }
+                        <img [src]="'assets/images/proyects/'+proyect.id+'.png'">
+                    </div>
+                </div>
+                <div class="proyect__body-right" [innerHTML]="proyect.description"></div>
+            </div>
+        </div>
+
+    </div>
+    }
+</section>

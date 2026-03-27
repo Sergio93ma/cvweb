@@ -1,0 +1,181 @@
+@use '../../../variables.scss' as *;
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proyects {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @media (max-width: $mobile) {
+        gap: 3rem;
+    }
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+        gap: 2rem;
+
+        .proyect {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--overbg-color);
+            border: 1px solid var(--grayscale-60);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all var(--time-slow) var(--cubic-normal);
+            opacity: 0;
+            transform: translateY(30px);
+
+            &.visible {
+                animation: fadeInUp 0.6s var(--cubic-normal) forwards;
+            }
+
+            &:hover {
+                border-color: var(--primary-color);
+                box-shadow: var(--floating-shadow);
+                transform: scale(1.01) translateY(-2px);
+                cursor: pointer;
+            }
+
+            &__body {
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+                height: 100%;
+
+                &-title {
+                    margin: 0;
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                    font-weight: 700;
+                    letter-spacing: -0.025em;
+
+                    @media (max-width: $tablet) {
+                        font-size: 1.3rem;
+                        line-height: 1.7rem;
+                    }
+
+                    i {
+                        color: var(--primary-color);
+                    }
+                }
+                &-description {
+                    flex: 1 0 0;
+                }
+            }
+        }
+    }
+
+    &__modal {
+        position: fixed;
+        inset: 0;
+        background-color: var(--overbg-color-t);
+        backdrop-filter: blur(15px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 300;
+
+        .proyect {
+            position: relative;
+            max-width: 70vw;
+            max-height: 90vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 310;
+            background-color: var(--overbg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--floating-shadow);
+
+            @media (max-width: $tablet) {
+                max-width: 90vw;
+                max-height: 86vh;
+                margin-bottom: 8vh;
+                overflow: auto;
+            }
+
+            i.fa-xmark {
+                position: absolute;
+                font-size: 2rem;
+                top: 1rem;
+                right: 1rem;
+                cursor: pointer;
+            }
+
+            &__title {
+                @media (max-width: $tablet) {
+                    font-size: 1.5rem;
+                }
+                i {
+                    color: var(--primary-color);
+                }
+            }
+            &__body {
+                display: flex;
+                gap: 1.5rem;
+
+                @media (max-width: $tablet) {
+                    flex-direction: column;
+                }
+
+                &-left {
+                    flex: 1 0 35%;
+
+                    .image {
+                        width: 100%;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+                &-right {
+                    flex: 1 0 65%;
+                }
+            }
+        }
+    }
+
+    .proyect__image {
+        position: relative;
+        width: 100%;
+
+        .confidential__overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+
+            i {
+                font-size: 3rem;
+                color: var(--primary-color);
+                border-radius: 100%;
+                width: 6rem;
+                height: 6rem;
+                line-height: 1.9;
+                border: 2px solid var(--primary-color);
+            }
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

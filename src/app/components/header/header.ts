@@ -15,6 +15,7 @@ export class Header {
         { label: 'Experience', id: 'experience' },
         { label: 'Education', id: 'education' },
         { label: 'Databox', id: 'databox' },
+        { label: 'Proyects', id: 'proyects' }
     ];
 
     ngAfterViewInit() {

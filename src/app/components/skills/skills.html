@@ -1,5 +1,5 @@
 <section class="skills">
-    <app-sectiontitle [title]="ts.translate('experience.careerTimeline')()"></app-sectiontitle>
+    <app-sectiontitle [title]="ts.translate('skills.title')()"></app-sectiontitle>
     <div class="skills__container">
         <div class="skills__categories">
             @for (c of skills(); track $index) {
@@ -18,7 +18,21 @@
                         </h4>
                         <div class="skill__more">
                             <div class="skill__more-description">{{ s.description }}</div>
-                            <div class="skill__more-experience">Exp: {{ s.experience }} {{ ts.translate('common.years')() }}</div>
+                            <div class="skill__more-subdescription">
+                                <div class="experience">
+                                    <div class="title">Exp:</div>
+                                    <div class="value">{{ s.experience }} {{ ts.translate('common.years')() }}</div>
+                                </div>
+                                <div class="keywords">
+                                    <div class="title">Keywords:</div>
+                                    <div class="value">
+                                        @for (k of s.keywords; track $index) {
+                                        {{ k }}@if(!$last) {,}
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <ul class="skill__progress">
                             @for (i of [].constructor(5); track $index) {

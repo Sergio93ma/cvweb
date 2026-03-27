@@ -51,7 +51,7 @@
             margin-right: -1rem;
             font-size: 0.8rem;
             font-family:
-                JetBrains Mono,
+                'JetBrains Mono',
                 monospace;
 
             @media (max-width: $mobile) {
@@ -132,7 +132,7 @@
 
                     .dates {
                         font-family:
-                            JetBrains Mono,
+                            'JetBrains Mono',
                             monospace;
                     }
 
@@ -142,7 +142,7 @@
                         padding-left: 1.3rem;
                         color: var(--grayscale-20);
                         font-family:
-                            JetBrains Mono,
+                            'JetBrains Mono',
                             monospace;
 
                         li {

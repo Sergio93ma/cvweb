@@ -10,14 +10,14 @@
     padding: 3rem;
     color: var(--primary-10);
     box-shadow: var(--floating-shadow);
-    transform: var(--floating-transform);
 
-    @supports (animation-timeline: view()) {
-        animation: floating-enter ease-in forwards;
-        animation-timeline: view();
-        animation-range: entry 0% cover 50%;
+    @media (min-width: $tablet) {
+        @supports (animation-timeline: view()) {
+            animation: floating-enter ease-in forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 50%;
+        }
     }
-
     @media (max-width: $tablet) {
         padding: 2rem;
         grid-template-columns: 1fr;
@@ -67,7 +67,7 @@
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
                 color: var(--primary-30);
-                
+
                 @media (max-width: $mobile) {
                     font-size: 0.7rem;
                 }

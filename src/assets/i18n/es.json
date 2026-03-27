@@ -1,15 +1,20 @@
 {
     "common": {
-        "years": "años"
+        "years": "años",
+        "commingsoon": "Próximamente"
     },
     "home": {
         "title": "Ingeniero",
         "titleHighlight": "Frontend",
+        "senior_frontend_developer": "DESARROLLADOR_SENIOR_FRONTEND",
         "subtitle": "Frontends de Alto Rendimiento. Bien Construidos.",
         "description": "Desarrollador Frontend con más de 9 años de experiencia profesional construyendo aplicaciones web escalables con Angular, AEM y ecosistemas modernos de JavaScript. Enfocado en rendimiento, mantenibilidad e impacto real en el negocio.",
         "downloadCV": "Descargar CV",
         "viewProjects": "Ver Proyectos Seleccionados",
-        "scrollToExplore": "Explora más abajo"
+        "scrollToExplore": "Explora más abajo",
+        "description1": "Soy desarrollador frontend con más de 10 años de experiencia, pero antes diseñaba edificios. Estudié Arquitectura, y eso me enseñó a diseñar con criterio estético, a cuidar cada detalle visual y a entender que lo que se ve importa tanto como lo que hay detrás. Cuando descubrí el desarrollo web, todo encajó: llevaba años programando porque me gustaba crear con lógica y construir cosas que resolvieran problemas reales. Unir esas dos formas de pensar es lo que define cómo trabajo hoy.",
+        "description2": "Actualmente soy Senior Frontend Developer especializado en Angular y TypeScript en Serbatic, desarrollando con AEM para clientes internacionales y liderando un equipo de frontend. Me importa tanto que el código sea limpio como que el producto final tenga sentido para quien lo usa. Cuando el código está bien escrito, se nota: las páginas cargan más rápido, escalan mejor y son mucho más fáciles de mantener.",
+        "description3": "Busco equipos donde se construya con criterio, se aprenda de verdad y el frontend se trate con la misma seriedad que el resto del producto."
     },
     "summary": {
         "professionalExperience": "Años de Experiencia Profesional",
@@ -38,5 +43,9 @@
         "lighthouse": "Lighthouse",
         "bundle": "Bundle",
         "dependencies": "Dependencias"
+    },
+    "proyects": {
+        "title": "Proyectos seleccionados",
+        "description": "Una seleccion de los proyectos más interesantes que he desarrollado."
     }
 }

@@ -20,6 +20,24 @@
         }
     }
 
+    .bottom {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1.5rem;
+        margin-top: 0.6rem;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            content: '';
+            width: 200px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+    }
+
     &__description {
         font-size: 1.2rem;
         color: var(--grayscale-40);

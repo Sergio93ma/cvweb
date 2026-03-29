@@ -21,6 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
+/.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -30,7 +31,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/.angular
 .sass-cache/
 /connect.lock
 /coverage
@@ -38,8 +39,10 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/.claude
 
 # Firebase
+/.firebase
 .firebaserc
 firebase-debug.log
 

@@ -1,4 +1,4 @@
-import { Component, inject, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { ThemeService } from '../../services/theme.service';
 import pkg from '../../../../package.json';
@@ -8,6 +8,7 @@ import pkg from '../../../../package.json';
     imports: [],
     templateUrl: './footer.html',
     styleUrl: './footer.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {
     ts = inject(TranslationService);

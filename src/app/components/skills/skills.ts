@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Sectiontitle } from '../sectiontitle/sectiontitle';
 import { TranslationService } from '../../services/translation.service';

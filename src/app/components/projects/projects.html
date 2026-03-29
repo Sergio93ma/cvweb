@@ -1,15 +1,15 @@
-<section class="proyects">
-    <app-sectiontitle [title]="ts.translate('proyects.title')()" [description]="ts.translate('proyects.description')()"></app-sectiontitle>
-    <div class="proyects__grid">
-        @for (p of proyects(); track $index) {
-        <div class="proyect" (click)="openProyect(p.id)">
+<section class="projects">
+    <app-sectiontitle [title]="ts.translate('projects.title')()" [description]="ts.translate('projects.description')()"></app-sectiontitle>
+    <div class="projects__grid">
+        @for (p of projects(); track $index) {
+        <div class="proyect" (click)="openProject(p.id)">
             <div class="proyect__image">
                 @if (p.type === 'confidential') {
                 <div class="confidential__overlay">
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 }
-                <img [src]="'assets/images/proyects/'+p.id+'.png'">
+                <img [src]="'assets/images/projects/'+p.id+'.webp'" alt="{{ p.title }}" loading="lazy" width="300" height="200">
             </div>
             <div class="proyect__body">
                 <h3 class="proyect__body-title">
@@ -26,26 +26,26 @@
         }
     </div>
 
-    @if (proyect) {
-    <div class="proyects__modal" (click)="closeProyect()">
+    @if (project) {
+    <div class="projects__modal" (click)="closeProject()">
         <div class="proyect" (click)="$event.stopPropagation()">
-            <i class="fa-solid fa-xmark" (click)="closeProyect()"></i>
+            <i class="fa-solid fa-xmark" (click)="closeProject()"></i>
             <h1 class="proyect__title">
-                @if(proyect.icon) {<i [class]="proyect.icon"></i>&nbsp;}
-                {{ proyect.title }}
+                @if(project.icon) {<i [class]="project.icon"></i>&nbsp;}
+                {{ project.title }}
             </h1>
             <div class="proyect__body">
                 <div class="proyect__body-left">
                     <div class="proyect__image">
-                        @if (proyect.type === 'confidential') {
+                        @if (project.type === 'confidential') {
                         <div class="confidential__overlay">
                             <i class="fa-solid fa-lock"></i>
                         </div>
                         }
-                        <img [src]="'assets/images/proyects/'+proyect.id+'.png'">
+                        <img [src]="'assets/images/projects/'+project.id+'.webp'" alt="{{ project.title }}" loading="lazy" width="300" height="200">
                     </div>
                 </div>
-                <div class="proyect__body-right" [innerHTML]="proyect.description"></div>
+                <div class="proyect__body-right" [innerHTML]="project.description"></div>
             </div>
         </div>
 

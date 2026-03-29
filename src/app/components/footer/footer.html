@@ -1,22 +1,22 @@
 <footer>
     <div class="icons">
-        <a href="https://www.linkedin.com/in/sergio93ma/" target="_blank">
+        <a href="https://www.linkedin.com/in/sergio93ma/" target="_blank" [attr.aria-label]="ts.translate('footer.linkedinLink')()">
             <i class="fa-brands fa-linkedin-in"></i>
         </a>
-        <a href="https://github.com/sergio93ma" target="_blank">
+        <a href="https://github.com/sergio93ma" target="_blank" [attr.aria-label]="ts.translate('footer.githubLink')()">
             <i class="fa-brands fa-github"></i>
         </a>
     </div>
     <label class="switch language">
         <div class="overlay"></div>
-        <input type="checkbox" [checked]="isSpanish()" (change)="toggleLanguage($event)" />
+        <input type="checkbox" [checked]="isSpanish()" (change)="toggleLanguage($event)" [attr.aria-label]="ts.translate('footer.toggleLanguage')()" />
         <span class="slider">
-            <img class="spanish" src="assets/images/spanish.svg">
+            <img class="spanish" src="assets/images/spanish.svg" [attr.alt]="ts.translate('footer.spanishFlag')()">
         </span>
     </label>
     <label class="switch theme">
         <div class="overlay"></div>
-        <input type="checkbox" [checked]="isLightTheme()" (change)="toggleTheme()" />
+        <input type="checkbox" [checked]="isLightTheme()" (change)="toggleTheme()" [attr.aria-label]="ts.translate('footer.toggleTheme')()" />
         <span class="slider">
             <i class="fa-solid fa-sun-bright"></i>
             <i class="fa-solid fa-moon"></i>

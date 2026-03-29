@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
@@ -6,6 +6,7 @@ import { TranslationService } from '../../services/translation.service';
     imports: [],
     templateUrl: './aboutme.html',
     styleUrl: './aboutme.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Aboutme {
     ts = inject(TranslationService);

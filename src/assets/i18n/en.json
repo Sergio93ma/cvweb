@@ -1,17 +1,16 @@
 {
     "common": {
         "years": "years",
-        "commingsoon": "Comming soon"
+        "commingsoon": "Comming soon",
+        "downloadCV": "Download CV"
     },
-    "home": {
-        "title": "Frontend",
-        "titleHighlight": "Engineer",
+    "aboutme": {
         "senior_frontend_developer": "SENIOR_FRONTEND_DEVELOPER",
-        "subtitle": "High-Performance Frontends. Engineered Right.",
-        "description": "Frontend Developer with 9+ years of professional experience building scalable web applications with Angular, AEM and modern JavaScript ecosystem. Focused on performance, maintainability and real business impact.",
-        "downloadCV": "Download CV",
         "viewProjects": "View Selected Projects",
-        "scrollToExplore": "Scroll to explore"
+        "description1": "Frontend developer with more than 10 years of experience, but previously designed buildings. Studied Architecture, which taught me to design with aesthetic judgment, to care about every visual detail, and to understand that what you see matters just as much as what lies behind it. When I discovered web development, everything clicked: I had been programming for years because I enjoyed creating with logic and building things that solved real problems. Bringing those two ways of thinking together is what defines how I work today.",
+        "description2": "Currently a Senior Frontend Developer specialized in Angular and TypeScript at Serbatic, developing with AEM for international clients and leading a frontend team. Care as much about clean code as about the final product making sense to the user. When code is well written, it shows: pages load faster, scale better, and are much easier to maintain.",
+        "description3": "Looking for teams where things are built with intention, where there is real learning, and where frontend is treated with the same level of seriousness as the rest of the product.",
+        "profilePhoto": "Sergio Martín Alonso - Senior Frontend Developer"
     },
     "summary": {
         "professionalExperience": "Professional Experience",
@@ -41,8 +40,15 @@
         "bundle": "Bundle",
         "dependencies": "Dependencies"
     },
-    "proyects": {
-        "title": "Selected Proyects",
-        "description": "Una seleccion de los proyectos más interesantes que he desarrollado."
+    "projects": {
+        "title": "Selected Projects",
+        "description": "A selection of the most interesting projects I have developed."
+    },
+    "footer": {
+        "linkedinLink": "Visit my LinkedIn profile",
+        "githubLink": "Visit my GitHub profile",
+        "toggleLanguage": "Switch language between Spanish and English",
+        "spanishFlag": "Spanish flag",
+        "toggleTheme": "Toggle between light and dark theme"
     }
 }

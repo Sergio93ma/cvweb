@@ -1,12 +1,17 @@
-import { Injectable, signal, computed, Signal } from '@angular/core';
+import { Injectable, signal, computed, Signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 type Language = 'es' | 'en';
 
+interface TranslationContent {
+    [key: string]: string | TranslationContent;
+}
+
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
+    private http = inject(HttpClient);
     private currentLanguage = signal<Language>('en');
-    private translations = signal<Record<string, any>>({});
+    private translations = signal<TranslationContent>({});
     private isLoading = signal(false);
     private isReady = signal(false);
 
@@ -14,7 +19,7 @@ export class TranslationService {
     isLoading$ = this.isLoading.asReadonly();
     isReady$ = this.isReady.asReadonly();
 
-    constructor(private http: HttpClient) {
+    constructor() {
         this.initializeLanguage();
     }
 
@@ -34,7 +39,7 @@ export class TranslationService {
         try {
             const url = `./assets/i18n/${lang}.json`;
             const data = await this.http
-                .get<Record<string, any>>(url)
+                .get<TranslationContent>(url)
                 .toPromise();
 
             if (data) {
@@ -52,7 +57,6 @@ export class TranslationService {
     }
 
     getTranslation = computed(() => {
-        // Acceso reactivo: depende de currentLanguage y translations
         this.currentLanguage();
         this.translations();
         
@@ -65,10 +69,11 @@ export class TranslationService {
 
     private get(key: string): string {
         const keys = key.split('.');
-        let result: any = this.translations();
+        let result: TranslationContent | string = this.translations();
 
         for (const k of keys) {
-            result = result?.[k];
+            if (typeof result === 'string') break;
+            result = (result as TranslationContent)?.[k];
         }
 
         return typeof result === 'string' ? result : key;

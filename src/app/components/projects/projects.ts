@@ -1,9 +1,29 @@
-import { Component, inject, computed, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, computed, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { Sectiontitle } from '../sectiontitle/sectiontitle';
 import { DOCUMENT } from '@angular/common';
 
-interface ProyectBase {
+interface ProjectMetrics {
+    lighthouse?: {
+        performance: number;
+        accessibility: number;
+        bestPractices: number;
+        seo: number;
+    };
+    webVitals?: {
+        lcp?: number;
+        fcp?: number;
+        cls?: number;
+        tbt?: number;
+        ttfb?: number;
+    };
+    load?: {
+        domContentLoaded: number;
+        total: number;
+    };
+}
+
+interface ProjectBase {
     id: string;
     icon?: string;
     technologies: string[];
@@ -11,32 +31,35 @@ interface ProyectBase {
     type: 'public' | 'confidential';
     url?: string;
     github?: string;
-    metrics?: any;
+    metrics?: ProjectMetrics;
 }
 
-interface ProyectTranslation {
+interface ProjectTranslation {
     title: string;
     description?: string;
     description_short?: string;
 }
 
+type ProjectFull = ProjectBase & ProjectTranslation;
+
 @Component({
-    selector: 'app-proyects',
+    selector: 'app-projects',
     imports: [Sectiontitle],
-    templateUrl: './proyects.html',
-    styleUrl: './proyects.scss',
+    templateUrl: './projects.html',
+    styleUrl: './projects.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Proyects {
+export class Projects {
     ts = inject(TranslationService);
     private elementRef = inject(ElementRef);
     private ngZone = inject(NgZone);
     private document = inject(DOCUMENT);
-    @ViewChild('gridContainer') gridContainer: any;
+    @ViewChild('gridContainer') gridContainer: ElementRef<HTMLDivElement> | null = null;
 
-    proyect: any | null = null;
+    project: ProjectFull | null = null;
     private intersectionObserver: IntersectionObserver | null = null;
 
-    private readonly baseProyects: ProyectBase[] = [
+    private readonly baseProjects: ProjectBase[] = [
         {
             id: 'cdbv',
             icon: 'fa-solid fa-badminton',
@@ -143,10 +166,27 @@ export class Proyects {
             company: 'Freelance',
             type: 'public',
             url: 'https://sergio93ma.dev/',
+            metrics: {
+                lighthouse: {
+                    performance: 85,
+                    accessibility: 91,
+                    bestPractices: 100,
+                    seo: 100,
+                },
+                webVitals: {
+                    fcp: 1.3,
+                    lcp: 1.6,
+                    cls: 0.143,
+                },
+                load: {
+                    domContentLoaded: 399,
+                    total: 1300,
+                },
+            },
         },
     ];
 
-    private readonly translations: Record<string, Record<string, ProyectTranslation>> = {
+    private readonly translations: Record<string, Record<string, ProjectTranslation>> = {
         es: {
             cdbv: {
                 title: 'CD Bádminton Valladolid',
@@ -307,21 +347,21 @@ export class Proyects {
         },
     };
 
-    proyects = computed(() => {
+    projects = computed(() => {
         const lang = this.ts.language$();
-        return this.baseProyects.map((proyect) => ({
-            ...proyect,
-            ...this.translations[lang]?.[proyect.id],
+        return this.baseProjects.map((project) => ({
+            ...project,
+            ...this.translations[lang]?.[project.id],
         }));
     });
 
-    openProyect(id: string): void {
-        this.proyect = this.proyects().find((p) => p.id === id) || null;
-        if (this.proyect) this.disableBodyScroll();
+    openProject(id: string): void {
+        this.project = this.projects().find((p) => p.id === id) || null;
+        if (this.project) this.disableBodyScroll();
     }
 
-    closeProyect(): void {
-        this.proyect = null;
+    closeProject(): void {
+        this.project = null;
         this.enableBodyScroll();
     }
 
@@ -358,10 +398,10 @@ export class Proyects {
 
         // Observar todos los .proyect del grid
         setTimeout(() => {
-            const proyects = this.elementRef.nativeElement.querySelectorAll(
-                '.proyects__grid .proyect',
+            const projects = this.elementRef.nativeElement.querySelectorAll(
+                '.projects__grid .proyect',
             );
-            proyects.forEach((proyect: HTMLElement) => {
+            projects.forEach((proyect: HTMLElement) => {
                 this.intersectionObserver?.observe(proyect);
             });
         }, 0);

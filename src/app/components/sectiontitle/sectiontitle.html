@@ -1,9 +1,9 @@
 <div class="sectiontitle">
-    @if(title){<h2 class="sectiontitle__title">{{ title }}</h2>}
-    @if(subtitle || description){
+    @if(title()){<h2 class="sectiontitle__title">{{ title() }}</h2>}
+    @if(subtitle() || description()){
     <div class="bottom">
-        @if(subtitle){<h4 class="sectiontitle__subtitle">{{ subtitle }}</h4>}
-        @if(description){<p class="sectiontitle__description">{{ description }}</p>}
+        @if(subtitle()){<h4 class="sectiontitle__subtitle">{{ subtitle() }}</h4>}
+        @if(description()){<p class="sectiontitle__description">{{ description() }}</p>}
     </div>
     }
 </div>

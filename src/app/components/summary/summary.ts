@@ -61,7 +61,7 @@ export class Summary {
             'production-technologies': { text: 'Tecnologías en Producción' },
         },
         en: {
-            'professional-experience': { text: 'Profesional Experience' },
+            'professional-experience': { text: 'Professional Experience' },
             'years-building': { text: 'Years Building Web Projects' },
             'projects-delivered': { text: 'Web Projects Delivered' },
             'production-technologies': { text: 'Production Technologies' },

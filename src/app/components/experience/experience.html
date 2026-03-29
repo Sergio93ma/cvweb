@@ -22,8 +22,8 @@
                 </summary>
                 <div class="expitem__details">
                     <small class="dates">
-                        {{ e.start.month | locale:e.start.year:'es' }} —
-                        @if(e.end) { {{ e.end.month | locale:e.end.year:'es' }}
+                        {{ e.start.month | locale:e.start.year:ts.language$() }} —
+                        @if(e.end) { {{ e.end.month | locale:e.end.year:ts.language$() }}
                         } @else { {{ ts.translate('experience.present')() }} }
                     </small>
                     <ul class="expitem__details-items">

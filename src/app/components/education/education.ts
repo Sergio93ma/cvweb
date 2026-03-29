@@ -1,11 +1,11 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { Sectiontitle } from '../sectiontitle/sectiontitle';
 import { LocalePipe } from '../../pipes/locale.pipe';
 import { TextTransformPipe } from '../../pipes/texttransform.pipe';
 
-interface EducationItem {
-    title: string;
+interface EducationItemBase {
+    id: string;
     start: {
         month: number;
         year: number;
@@ -16,21 +16,27 @@ interface EducationItem {
     };
     institution: string;
     location: string;
-    details?: string;
 }
+
+interface EducationItemTranslation {
+    title: string;
+}
+
+interface EducationItem extends EducationItemBase, EducationItemTranslation {}
 
 @Component({
     selector: 'app-education',
     imports: [Sectiontitle, LocalePipe, TextTransformPipe],
     templateUrl: './education.html',
     styleUrl: './education.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Education {
     ts = inject(TranslationService);
 
-    education_EN: EducationItem[] = [
+    private readonly baseEducation: EducationItemBase[] = [
         {
-            title: 'Higher Technician in Web Application Development',
+            id: 'technician',
             start: {
                 month: 9,
                 year: 2021,
@@ -43,7 +49,7 @@ export class Education {
             location: 'Valladolid, Spain',
         },
         {
-            title: 'High School Diploma — Science Track',
+            id: 'highschool',
             start: {
                 month: 9,
                 year: 2009,
@@ -56,7 +62,7 @@ export class Education {
             location: 'Valladolid, Spain',
         },
         {
-            title: "Bachelor's Degree in Architecture",
+            id: 'architecture',
             start: {
                 month: 9,
                 year: 2014,
@@ -69,49 +75,50 @@ export class Education {
             location: 'Valladolid, Spain',
         },
     ];
-    education_ES: EducationItem[] = [
-        {
-            title: 'Título de Grado Superior en Desarrollo de Aplicaciones Web',
-            start: {
-                month: 9,
-                year: 2021,
+
+    private readonly translations: Record<string, Record<string, EducationItemTranslation>> = {
+        en: {
+            technician: {
+                title: 'Higher Technician in Web Application Development',
             },
-            end: {
-                month: 6,
-                year: 2023,
+            highschool: {
+                title: 'High School Diploma — Science Track',
             },
-            institution: 'IES Galileo',
-            location: 'Valladolid, España',
+            architecture: {
+                title: "Bachelor's Degree in Architecture",
+            },
         },
-        {
-            title: 'Título de Bachillerato en la modalidad de Ciencias',
-            start: {
-                month: 9,
-                year: 2009,
+        es: {
+            technician: {
+                title: 'Título de Grado Superior en Desarrollo de Aplicaciones Web',
             },
-            end: {
-                month: 6,
-                year: 2011,
+            highschool: {
+                title: 'Título de Bachillerato en la modalidad de Ciencias',
             },
-            institution: 'IES Julián Marías',
-            location: 'Valladolid, España',
+            architecture: {
+                title: 'Título de Grado en Arquitectura',
+            },
         },
-        {
-            title: 'Título de Grado en Arquitectura',
-            start: {
-                month: 9,
-                year: 2014,
+    };
+
+    private translateLocation(locationEn: string): string {
+        const translations: Record<string, Record<string, string>> = {
+            'Valladolid, Spain': {
+                es: 'Valladolid, España',
             },
-            end: {
-                month: 6,
-                year: 2019,
-            },
-            institution: 'Universidad de Valladolid',
-            location: 'Valladolid, España',
-        },
-    ];
+        };
+        const lang = this.ts.language$();
+        return lang === 'es' && translations[locationEn]
+            ? translations[locationEn][lang]
+            : locationEn;
+    }
+
     education = computed(() => {
         const lang = this.ts.language$();
-        return lang === 'es' ? this.education_ES : this.education_EN;
+        return this.baseEducation.map((item) => ({
+            ...item,
+            location: this.translateLocation(item.location),
+            ...this.translations[lang as 'en' | 'es']?.[item.id],
+        }));
     });
 }

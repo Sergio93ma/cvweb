@@ -1,4 +1,4 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
@@ -9,17 +9,16 @@ import { Experience } from './components/experience/experience';
 import { Education } from './components/education/education';
 import { Databox } from './components/databox/databox';
 import { Aboutme } from "./components/aboutme/aboutme";
-import { Proyects } from "./components/proyects/proyects";
+import { Projects } from "./components/projects/projects";
 
 @Component({
     selector: 'app-root',
-    imports: [CommonModule, Header, Footer, Summary, Experience, Education, Databox, Skills, Aboutme, Proyects],
+    imports: [CommonModule, Header, Footer, Summary, Experience, Education, Databox, Skills, Aboutme, Projects],
     templateUrl: './app.html',
     styleUrl: './app.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
     protected readonly title = signal('cvweb-front');
-
-    constructor(private themeService: ThemeService) {}
+    private themeService = inject(ThemeService);
 }

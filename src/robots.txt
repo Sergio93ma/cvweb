@@ -1,2 +1,24 @@
+# SEO Configuration for sergio93ma.dev
+
+# Allow all bots
 User-agent: *
-Disallow: /
+Allow: /
+
+# Google bot specific
+User-agent: Googlebot
+Allow: /
+
+# Bing bot specific
+User-agent: Bingbot
+Allow: /
+
+# Specific crawl settings
+Disallow: /admin
+Disallow: /*.json$
+Disallow: /*.js$
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.sergio93ma.dev/sitemap.xml

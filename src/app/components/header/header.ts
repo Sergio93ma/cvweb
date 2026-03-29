@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
     selector: 'app-header',
     imports: [],
     templateUrl: './header.html',
     styleUrl: './header.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
     activeSection = signal<string>('');
@@ -15,7 +16,7 @@ export class Header {
         { label: 'Experience', id: 'experience' },
         { label: 'Education', id: 'education' },
         { label: 'Databox', id: 'databox' },
-        { label: 'Proyects', id: 'proyects' }
+        { label: 'Projects', id: 'projects' }
     ];
 
     ngAfterViewInit() {

@@ -40,8 +40,8 @@ testem.log
 /typings
 __screenshots__/
 /.claude
-src\assets\fonts\*
-src\assets\css\*
+/src/assets/fonts/*
+/src/assets/css/*
 
 # Firebase
 /.firebase

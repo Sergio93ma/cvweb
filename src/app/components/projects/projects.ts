@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component, inject, computed, ElementRef, ViewC
 import { TranslationService } from '../../services/translation.service';
 import { Sectiontitle } from '../sectiontitle/sectiontitle';
 import { DOCUMENT } from '@angular/common';
+import { TextTransformPipe } from "../../pipes/texttransform.pipe";
 
 interface ProjectMetrics {
     lighthouse?: {
         performance: number;
         accessibility: number;
         bestPractices: number;
-        seo: number;
+        SEO: number;
     };
     webVitals?: {
         lcp?: number;
@@ -44,7 +45,7 @@ type ProjectFull = ProjectBase & ProjectTranslation;
 
 @Component({
     selector: 'app-projects',
-    imports: [Sectiontitle],
+    imports: [Sectiontitle, TextTransformPipe],
     templateUrl: './projects.html',
     styleUrl: './projects.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,6 +58,7 @@ export class Projects {
     @ViewChild('gridContainer') gridContainer: ElementRef<HTMLDivElement> | null = null;
 
     project: ProjectFull | null = null;
+    protected readonly Object = Object;
     private intersectionObserver: IntersectionObserver | null = null;
 
     private readonly baseProjects: ProjectBase[] = [
@@ -72,7 +74,7 @@ export class Projects {
                     performance: 66,
                     accessibility: 87,
                     bestPractices: 77,
-                    seo: 77,
+                    SEO: 77,
                 },
                 webVitals: {
                     lcp: 1.6,
@@ -96,7 +98,7 @@ export class Projects {
                     performance: 86,
                     accessibility: 78,
                     bestPractices: 96,
-                    seo: 54,
+                    SEO: 54,
                 },
                 webVitals: {
                     fcp: 1.6,
@@ -122,7 +124,7 @@ export class Projects {
                     performance: 73,
                     accessibility: 93,
                     bestPractices: 100,
-                    seo: 92,
+                    SEO: 92,
                 },
                 webVitals: {
                     fcp: 1.1,
@@ -146,7 +148,7 @@ export class Projects {
                     performance: 48,
                     accessibility: 81,
                     bestPractices: 81,
-                    seo: 77,
+                    SEO: 77,
                 },
                 webVitals: {
                     fcp: 1.0,
@@ -166,12 +168,13 @@ export class Projects {
             company: 'Freelance',
             type: 'public',
             url: 'https://sergio93ma.dev/',
+            github: 'https://github.com/Sergio93ma/cvweb',
             metrics: {
                 lighthouse: {
                     performance: 85,
                     accessibility: 91,
                     bestPractices: 100,
-                    seo: 100,
+                    SEO: 100,
                 },
                 webVitals: {
                     fcp: 1.3,
@@ -396,13 +399,12 @@ export class Projects {
             });
         }, options);
 
-        // Observar todos los .proyect del grid
         setTimeout(() => {
             const projects = this.elementRef.nativeElement.querySelectorAll(
-                '.projects__grid .proyect',
+                '.projects__grid .project',
             );
-            projects.forEach((proyect: HTMLElement) => {
-                this.intersectionObserver?.observe(proyect);
+            projects.forEach((project: HTMLElement) => {
+                this.intersectionObserver?.observe(project);
             });
         }, 0);
     }

@@ -42,7 +42,11 @@
     },
     "projects": {
         "title": "Selected Projects",
-        "description": "A selection of the most interesting projects I have developed."
+        "description": "A selection of the most interesting projects I have developed.",
+        "performanceimpact": "Performance impact",
+        "technologies": "Stack & Architecture",
+        "seecode": "See code",
+        "visit": "Visit page"
     },
     "footer": {
         "linkedinLink": "Visit my LinkedIn profile",

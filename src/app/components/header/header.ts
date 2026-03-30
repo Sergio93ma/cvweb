@@ -11,8 +11,8 @@ export class Header {
     activeSection = signal<string>('');
 
     navItems = [
-        { id: 'herobanner' },
-        { label: 'Summary', id: 'summary' },
+        { id: 'aboutme' },
+        { label: 'Skills', id: 'skills' },
         { label: 'Experience', id: 'experience' },
         { label: 'Education', id: 'education' },
         { label: 'Databox', id: 'databox' },
@@ -25,7 +25,7 @@ export class Header {
                 const visible = entries.find((e) => e.isIntersecting);
                 if (visible) this.activeSection.set(visible.target.id);
             },
-            { threshold: 1 },
+            { threshold: 0.8 },
         );
 
         this.navItems.forEach(({ id }) => {

@@ -25,7 +25,7 @@
         grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
         gap: 2rem;
 
-        .proyect {
+        .project {
             display: flex;
             flex-direction: column;
             background-color: var(--overbg-color);
@@ -73,6 +73,15 @@
                 &-description {
                     flex: 1 0 0;
                 }
+
+                &-links {
+                    display: flex;
+                    gap: 0.6rem;
+
+                    i {
+                        font-size: 1.3rem;
+                    }
+                }
             }
         }
     }
@@ -87,7 +96,7 @@
         justify-content: center;
         z-index: 300;
 
-        .proyect {
+        .project {
             position: relative;
             max-width: 70vw;
             max-height: 90vh;
@@ -132,25 +141,116 @@
                 }
 
                 &-left {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
                     flex: 1 0 35%;
+                }
+                &-right {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    flex: 1 0 65%;
+                }
 
-                    .image {
-                        width: 100%;
+                h4 {
+                    color: var(--primary-color);
+                    text-transform: uppercase;
+                    font-family: 'JetBrains Mono', monospace;
+                }
+            }
 
-                        img {
-                            width: 100%;
-                            height: auto;
+            &__metrics {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+
+                &-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr));
+
+                    .metric {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 0.6rem;
+
+                        &__spinner {
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            animation: pct-fill 1.2s var(--cubic-normal) forwards;
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                inset: 0;
+                                border-radius: 50%;
+                                background: conic-gradient(
+                                    var(--primary-color) calc(var(--anim-pct) * 1%),
+                                    color-mix(in srgb, var(--primary-color) 18%, transparent) 0
+                                );
+                                mask: radial-gradient(
+                                    farthest-side,
+                                    transparent calc(100% - 10px),
+                                    black calc(100% - 10px + 0.5px)
+                                );
+                            }
+
+                            &-label {
+                                font-weight: 500;
+                                line-height: 1;
+                                z-index: 1;
+                                position: relative;
+                            }
+                        }
+
+                        &__text {
+                            font-size: 0.8rem;
                         }
                     }
                 }
-                &-right {
-                    flex: 1 0 65%;
+            }
+            &__technologies {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+
+                &-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.8rem;
+
+                    .technology {
+                        padding: 1rem 2rem;
+                        background-color: color-mix(in srgb, var(--grayscale-50) 20%, transparent);
+                        border-left: 4px solid var(--primary-color);
+                        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+                        @media (max-width: $tablet) {
+                            flex: 1 0 0;
+                        }
+                    }
+                }
+            }
+
+            &__buttons {
+                display: flex;
+                justify-content: end;
+                gap: 1rem;
+
+                @media (max-width: $tablet) {
+                    flex-direction: column;
                 }
             }
         }
     }
 
-    .proyect__image {
+    .project__image {
         position: relative;
         width: 100%;
 

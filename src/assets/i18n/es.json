@@ -42,7 +42,11 @@
     },
     "projects": {
         "title": "Proyectos seleccionados",
-        "description": "Una seleccion de los proyectos más interesantes que he desarrollado."
+        "description": "Una seleccion de los proyectos más interesantes que he desarrollado.",
+        "performanceimpact": "Impacto en el rendimiento",
+        "technologies": "Stack y Arquitectura",
+        "seecode": "Ver código",
+        "visit": "Visitar página"
     },
     "footer": {
         "linkedinLink": "Visita mi perfil de LinkedIn",

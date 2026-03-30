@@ -2,8 +2,8 @@
     <app-sectiontitle [title]="ts.translate('projects.title')()" [description]="ts.translate('projects.description')()"></app-sectiontitle>
     <div class="projects__grid">
         @for (p of projects(); track $index) {
-        <div class="proyect" (click)="openProject(p.id)">
-            <div class="proyect__image">
+        <div class="project" (click)="openProject(p.id)">
+            <div class="project__image">
                 @if (p.type === 'confidential') {
                 <div class="confidential__overlay">
                     <i class="fa-solid fa-lock"></i>
@@ -11,13 +11,13 @@
                 }
                 <img [src]="'assets/images/projects/'+p.id+'.webp'" alt="{{ p.title }}" loading="lazy" width="300" height="200">
             </div>
-            <div class="proyect__body">
-                <h3 class="proyect__body-title">
+            <div class="project__body">
+                <h3 class="project__body-title">
                     @if(p.icon) {<i [class]="p.icon"></i>&nbsp;}
                     {{ p.title }}
                 </h3>
-                <p class="proyect__body-description">{{ p.description_short }}</p>
-                <div class="proyect__body-links">
+                <p class="project__body-description">{{ p.description_short }}</p>
+                <div class="project__body-links">
                     @if (p.url) {<a [href]="p.url"><i class="fa-solid fa-link"></i></a>}
                     @if (p.github) {<a [href]="p.github"><i class="fa-brands fa-github"></i></a>}
                 </div>
@@ -28,24 +28,67 @@
 
     @if (project) {
     <div class="projects__modal" (click)="closeProject()">
-        <div class="proyect" (click)="$event.stopPropagation()">
+        <div class="project" (click)="$event.stopPropagation()">
             <i class="fa-solid fa-xmark" (click)="closeProject()"></i>
-            <h1 class="proyect__title">
+            <h1 class="project__title">
                 @if(project.icon) {<i [class]="project.icon"></i>&nbsp;}
                 {{ project.title }}
             </h1>
-            <div class="proyect__body">
-                <div class="proyect__body-left">
-                    <div class="proyect__image">
+            <div class="project__body">
+                <div class="project__body-left">
+                    <div class="project__image">
                         @if (project.type === 'confidential') {
                         <div class="confidential__overlay">
                             <i class="fa-solid fa-lock"></i>
                         </div>
                         }
-                        <img [src]="'assets/images/projects/'+project.id+'.webp'" alt="{{ project.title }}" loading="lazy" width="300" height="200">
+                        <img [src]="'assets/images/projects/'+project.id+'.webp'" alt="{{ project.title }}" loading="lazy" width="300"
+                            height="200">
                     </div>
+                    @if (project.metrics && project.metrics.lighthouse) {
+                    <div class="project__metrics">
+                        <h4 class="project__metrics-title">{{ ts.translate('projects.performanceimpact')()}}</h4>
+                        <div class="project__metrics-grid">
+                            @for (metric of Object.entries(project.metrics.lighthouse); track metric[0]) {
+                            <div class="metric">
+                                <div class="metric__spinner" [style.--value]="metric[1]">
+                                    <span class="metric__spinner-label">{{ metric[1] }}</span>
+                                </div>
+                                <span class="metric__text">{{ metric[0] | textTransform: 'capitalize' }}</span>
+                            </div>
+                            }
+                        </div>
+
+                    </div>
+                    }
                 </div>
-                <div class="proyect__body-right" [innerHTML]="project.description"></div>
+                <div class="project__body-right">
+                    <div class="project__description" [innerHTML]="project.description"></div>
+                    @if (project.technologies) {
+                    <div class="project__technologies">
+                        <h4 class="project__metrics-title">{{ ts.translate('projects.technologies')()}}</h4>
+                        <div class="project__technologies-grid">
+                            @for (t of project.technologies; track $index) {
+                            <div class="technology">{{ t }}</div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="project__buttons">
+                @if (project.github) {
+                <a [href]="project.github" download class="button-liquid">
+                    <span>{{ ts.translate('projects.seecode')() }}</span>
+                    <i class="fa-solid fa-rectangle-terminal"></i>
+                </a>
+                }
+                @if (project.url) {
+                <a [href]="project.url" download class="button-solid">
+                    <span>{{ ts.translate('projects.visit')() }}</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                }
             </div>
         </div>
 

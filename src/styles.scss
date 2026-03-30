@@ -117,6 +117,10 @@ small {
 // BUTTONS
 .button-solid,
 .button-liquid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
     background-color: transparent;
     background-image: none;
     text-transform: none;
@@ -198,4 +202,17 @@ body.light-theme {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+// MYSC
+@property --anim-pct {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+}
+
+@keyframes pct-fill {
+    from { --anim-pct: 0; }
+    to   { --anim-pct: var(--value); }
 }

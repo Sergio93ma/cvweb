@@ -87,7 +87,6 @@ src/
 │   │   ├── skills/         # Technical skills matrix
 │   │   ├── projects/       # Portfolio with modal detail
 │   │   ├── databox/        # Statistics & metrics
-│   │   ├── herobanner/     # Full-screen hero
 │   │   └── sectiontitle/   # Reusable section header
 │   ├── services/            # Business logic & state
 │   │   ├── translation.service.ts    # i18n with signals
@@ -344,7 +343,7 @@ interface ProjectMetrics {
         performance: number;
         accessibility: number;
         bestPractices: number;
-        seo: number;
+        SEO: number;
     };
     webVitals: {
         lcp?: number;

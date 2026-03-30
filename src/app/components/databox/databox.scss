@@ -47,6 +47,10 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
 
+        @media (max-width: $mobile) {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
         &-data {
             display: flex;
             flex-direction: column;
@@ -67,10 +71,6 @@
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
                 color: var(--primary-30);
-
-                @media (max-width: $mobile) {
-                    font-size: 0.7rem;
-                }
             }
         }
     }

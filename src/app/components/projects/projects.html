@@ -16,6 +16,7 @@
                     @if(p.icon) {<i [class]="p.icon"></i>&nbsp;}
                     {{ p.title }}
                 </h3>
+                <span class="project__body-company">{{ p.company }}</span>
                 <p class="project__body-description">{{ p.description_short }}</p>
                 <div class="project__body-links">
                     @if (p.url) {<a [href]="p.url"><i class="fa-solid fa-link"></i></a>}
@@ -30,10 +31,14 @@
     <div class="projects__modal" (click)="closeProject()">
         <div class="project" (click)="$event.stopPropagation()">
             <i class="fa-solid fa-xmark" (click)="closeProject()"></i>
-            <h1 class="project__title">
-                @if(project.icon) {<i [class]="project.icon"></i>&nbsp;}
-                {{ project.title }}
-            </h1>
+            <div class="project__header">
+                <h1 class="project__header-title">
+                    @if(project.icon) {<i [class]="project.icon"></i>&nbsp;}
+                    {{ project.title }}
+                </h1>
+                <span class="project__header-divisor">——</span>
+                <span class="project__header-company">{{ project.company }}</span>
+            </div>
             <div class="project__body">
                 <div class="project__body-left">
                     <div class="project__image">

@@ -92,7 +92,7 @@ export class Databox {
                         obs.disconnect();
                     }
                 },
-                { threshold: 1 },
+                { threshold: 0.6 },
             );
         }
     }

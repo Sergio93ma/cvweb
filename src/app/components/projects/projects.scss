@@ -51,7 +51,7 @@
                 padding: 1rem;
                 display: flex;
                 flex-direction: column;
-                gap: 0.8rem;
+                gap: 0.4rem;
                 height: 100%;
 
                 &-title {
@@ -70,6 +70,12 @@
                         color: var(--primary-color);
                     }
                 }
+
+                &-company {
+                    font-family: 'JetBrains Mono', monospace;
+                    font-size: 1.2rem;
+                }
+
                 &-description {
                     flex: 1 0 0;
                 }
@@ -124,14 +130,35 @@
                 cursor: pointer;
             }
 
-            &__title {
+            &__header {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+
                 @media (max-width: $tablet) {
-                    font-size: 1.5rem;
+                    flex-direction: column;
+                    align-items: start;
                 }
-                i {
-                    color: var(--primary-color);
+
+                &-title {
+                    @media (max-width: $tablet) {
+                        font-size: 1.5rem;
+                    }
+                    i {
+                        color: var(--primary-color);
+                    }
+                }
+                &-divisor {
+                    @media (max-width: $tablet) {
+                        display: none;
+                    }
+                }
+                &-company {
+                    font-family: 'JetBrains Mono', monospace;
+                    font-size: 1.2rem;
                 }
             }
+
             &__body {
                 display: flex;
                 gap: 1.5rem;

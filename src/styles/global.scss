@@ -107,7 +107,8 @@ small {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
-    transition: all var(--time-fast) var(--cubic-normal);
+    transition: var(--time-fast) var(--cubic-normal);
+    transition-property: background-color, color, border-color;
 
     @media (max-width: $mobile) {
         width: 100%;
@@ -180,5 +181,21 @@ small {
     }
     to {
         --anim-pct: var(--value);
+    }
+}
+
+// REDUCED MOTION
+// Animations jump straight to their end state (entry animations start hidden, so they can't just be removed)
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        animation-timeline: auto !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+        scroll-behavior: auto !important;
     }
 }

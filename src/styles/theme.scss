@@ -13,6 +13,8 @@
     --primary-100: rgb(5, 25, 60);
 
     --primary-color: var(--primary-70);
+    // Primary hue for small text: passes WCAG AA (4.5:1) on the dark surfaces
+    --primary-text: var(--primary-40);
     --primary-color-10a: rgba(19, 109, 236, 0.1);
     --primary-color-20a: rgba(19, 109, 236, 0.2);
     --primary-color-30a: rgba(19, 109, 236, 0.3);
@@ -101,5 +103,6 @@
     // Texts
     --text-primary: var(--grayscale-10);
     --text-contrast: var(--grayscale-80);
+    --primary-text: var(--primary-80);
 }
 

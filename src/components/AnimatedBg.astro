@@ -35,14 +35,14 @@
 
         &__light2 {
             position: absolute;
-            left: 20%;
-            top: 60%;
-            height: 8rem;
-            width: 8rem;
-            border-radius: 9999px;
-            background-color: var(--primary-70);
-            filter: blur(40px);
-            opacity: 0.5;
+            // Soft glows drawn as radial gradients: same look as a blurred shape, without
+            // rasterising a filter on every frame. Boxes are enlarged by the old blur reach.
+            left: calc(20% - 5rem);
+            top: calc(60% - 5rem);
+            height: 18rem;
+            width: 18rem;
+            background: radial-gradient(closest-side, var(--primary-70), transparent);
+            opacity: 0.36; // a blurred 8rem circle peaked at ~72% of its colour
 
             @supports (animation-timeline: view()) {
                 animation: parallax-down linear forwards;
@@ -52,27 +52,34 @@
         }
         &__light3 {
             position: fixed;
-            right: -10%;
-            top: 25%;
-            height: 600px;
-            width: 600px;
-            border-radius: 220px;
+            right: calc(-10% - 120px);
+            top: calc(25% - 120px);
+            height: 840px;
+            width: 840px;
             animation: glow 3s ease-in-out infinite;
-            background-color: var(--primary-70);
-            filter: blur(60px);
-            will-change: transform;
+            background: radial-gradient(closest-side, var(--primary-70) 45%, transparent);
+            will-change: opacity;
         }
         &__light4 {
             position: fixed;
-            bottom: 25%;
-            left: -10%;
-            height: 500px;
-            width: 500px;
-            border-radius: 200px;
+            bottom: calc(25% - 120px);
+            left: calc(-10% - 120px);
+            height: 740px;
+            width: 740px;
             animation: glow 4s ease-in-out infinite;
-            background-color: var(--primary-70);
-            filter: blur(60px);
-            will-change: transform;
+            background: radial-gradient(closest-side, var(--primary-70) 40%, transparent);
+            will-change: opacity;
+        }
+    }
+
+    // Decorative motion off: keep the glows still, at their mid opacity
+    @media (prefers-reduced-motion: reduce) {
+        .animatedbg > * {
+            animation: none !important;
+        }
+        .animatedbg__light3,
+        .animatedbg__light4 {
+            opacity: 0.075;
         }
     }
 

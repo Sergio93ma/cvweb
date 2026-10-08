@@ -6,10 +6,15 @@ export function countUpWhenVisible(section: Element, threshold: number, duration
         (entries) => {
             if (!entries[0]?.isIntersecting) return;
             observer.disconnect();
+            const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             for (const el of section.querySelectorAll<HTMLElement>('[data-count-to]')) {
                 const start = Number(el.textContent) || 0;
                 const target = Number(el.dataset.countTo);
+                if (reduceMotion) {
+                    el.textContent = String(target);
+                    continue;
+                }
                 const t0 = performance.now();
 
                 const step = (now: number) => {

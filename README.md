@@ -60,11 +60,13 @@ To add an icon:
 
 ## Fonts
 
-`src/assets/fonts/inter-variable.woff2` and `jetbrains-mono-variable.woff2` are Latin / Latin-Extended subsets of the original variable fonts (all axes kept), made with:
+`src/assets/fonts/inter-variable.woff2` and `jetbrains-mono-variable.woff2` are subsets of the original variable fonts (all axes kept) with only Latin-1 plus the punctuation the site uses (English and Spanish), made with:
 
 ```bash
-pyftsubset <Font>.ttf --unicodes="U+0000-00FF,U+0100-017F,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+2215" --flavor=woff2 --output-file=<name>.woff2
+pyftsubset <Font>.ttf --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+20AC,U+2122,U+2190-2193,U+21B3,U+2212" --flavor=woff2 --output-file=<name>.woff2
 ```
+
+If new text needs a character outside that range, re-run it from the original font with the character added.
 
 ## Deployment
 

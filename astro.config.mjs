@@ -5,6 +5,10 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
     site: 'https://sergio93ma.dev',
     output: 'static',
+    build: {
+        // One page, small CSS: inlining removes render-blocking requests before first paint
+        inlineStylesheets: 'always',
+    },
     fonts: [
         {
             provider: fontProviders.local(),

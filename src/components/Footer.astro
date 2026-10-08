@@ -95,8 +95,12 @@ const { lang } = Astro.props;
         gap: 1rem;
         z-index: 10;
         padding: 2rem 0.8rem;
-        opacity: 0.5;
-        transition: opacity 0.5s ease-out 2s;
+
+        // Dimmed at rest, except the version text, which must keep its contrast
+        > :not(.version) {
+            opacity: 0.5;
+            transition: opacity 0.5s ease-out 2s;
+        }
 
         @media (max-width: $tablet) {
             flex-direction: row;
@@ -107,8 +111,10 @@ const { lang } = Astro.props;
 
         &:hover,
         &:focus-within {
-            opacity: 1;
-            transition: opacity 0.2s ease-out;
+            > :not(.version) {
+                opacity: 1;
+                transition: opacity 0.2s ease-out;
+            }
         }
 
         .icons {
@@ -275,7 +281,7 @@ const { lang } = Astro.props;
         }
         .version {
             font-family: var(--font-mono);
-            color: var(--grayscale-30);
+            color: var(--grayscale-40);
             writing-mode: sideways-lr;
 
             @media (max-width: $tablet) {

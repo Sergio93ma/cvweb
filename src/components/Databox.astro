@@ -105,7 +105,8 @@ const { lang } = Astro.props;
                 justify-content: space-between;
                 gap: 0.25rem;
                 border-radius: var(--border-radius);
-                background-color: rgb(255 255 255 / 0.1);
+                // Darkened (not lightened) so the label keeps 4.5:1 on the blue
+                background-color: rgb(0 0 0 / 0.15);
                 padding: 1.5rem;
                 backdrop-filter: blur(12px);
 
@@ -118,7 +119,7 @@ const { lang } = Astro.props;
                     font-weight: 700;
                     text-transform: uppercase;
                     letter-spacing: 0.1em;
-                    color: var(--primary-30);
+                    color: var(--primary-20);
                 }
             }
         }

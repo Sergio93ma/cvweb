@@ -2,7 +2,7 @@
 
 Personal CV and portfolio of Sergio Martín Alonso, built with **Astro** as a static site: no UI framework, a few kilobytes of vanilla TypeScript, and HTML that is fully rendered at build time.
 
-**Live:** [sergio93ma.dev](https://www.sergio93ma.dev)
+**Live:** [sergio93ma.dev](https://sergio93ma.dev)
 
 ## Highlights
 

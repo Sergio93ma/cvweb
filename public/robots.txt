@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sergio93ma.dev/sitemap.xml
+Sitemap: https://sergio93ma.dev/sitemap.xml

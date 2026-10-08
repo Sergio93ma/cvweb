@@ -3,7 +3,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://www.sergio93ma.dev',
+    site: 'https://sergio93ma.dev',
     output: 'static',
     fonts: [
         {

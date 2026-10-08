@@ -171,15 +171,15 @@ export class Projects {
             github: 'https://github.com/Sergio93ma/cvweb',
             metrics: {
                 lighthouse: {
-                    performance: 85,
+                    performance: 92,
                     accessibility: 91,
                     bestPractices: 100,
                     SEO: 100,
                 },
                 webVitals: {
-                    fcp: 1.3,
-                    lcp: 1.6,
-                    cls: 0.143,
+                    fcp: 0.7,
+                    lcp: 0.9,
+                    cls: 0.151,
                 },
                 load: {
                     domContentLoaded: 399,

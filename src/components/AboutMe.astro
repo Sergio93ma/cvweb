@@ -1,0 +1,237 @@
+---
+import { Picture } from 'astro:assets';
+import photo from '../assets/images/profile_photo.png';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="aboutme" id="aboutme">
+    <div class="aboutme__presentation">
+        <div class="aboutme__presentation-photo">
+            <Picture
+                src={photo}
+                formats={['avif']}
+                fallbackFormat="webp"
+                widths={[144, 240, 288, 480]}
+                sizes="(max-width: 992px) 144px, 240px"
+                alt={t(lang, 'aboutme.profilePhoto')}
+                data-i18n-attr="alt:aboutme.profilePhoto"
+                loading="eager"
+                fetchpriority="high"
+            />
+        </div>
+        <h1 class="aboutme__presentation-title">
+            <span>Sergio</span>
+            <span>Martín</span>
+            <span>Alonso</span>
+        </h1>
+        <div class="aboutme__presentation-subtitle">
+            :: <span data-i18n="aboutme.senior_frontend_developer">{t(lang, 'aboutme.senior_frontend_developer')}</span>
+        </div>
+        <div class="aboutme__presentation-buttons">
+            <a href="/assets/CV/CV_Sergio_Martin_2026.pdf" download class="button-solid">
+                <span data-i18n="common.downloadCV">{t(lang, 'common.downloadCV')}</span>
+                <div class="button__bg"></div>
+            </a>
+            <button type="button" class="button-liquid" data-scroll-to="projects">
+                <span data-i18n="aboutme.viewProjects">{t(lang, 'aboutme.viewProjects')}</span>
+            </button>
+        </div>
+    </div>
+    <div class="aboutme__description">
+        <p data-i18n="aboutme.description1">{t(lang, 'aboutme.description1')}</p>
+        <p data-i18n="aboutme.description2">{t(lang, 'aboutme.description2')}</p>
+        <p data-i18n="aboutme.description3">{t(lang, 'aboutme.description3')}</p>
+    </div>
+</section>
+
+<script>
+    import { scrollToSection } from '../scripts/scroll';
+
+    for (const button of document.querySelectorAll<HTMLElement>('.aboutme [data-scroll-to]')) {
+        button.addEventListener('click', () => scrollToSection(button.dataset.scrollTo!));
+    }
+</script>
+
+<style lang="scss">
+    @use '../styles/tokens' as *;
+
+    .aboutme {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100vh - 6rem);
+
+        @media (max-width: $tablet) {
+            height: auto;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        &__presentation {
+            flex: 1 0 55%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding-left: 6rem;
+
+            @media (max-width: $tablet) {
+                flex: auto;
+                align-items: center;
+                width: 100%;
+                padding-left: 0rem;
+                padding-top: 2rem;
+            }
+
+            &-photo {
+                height: 20rem;
+                width: 15rem;
+                overflow: hidden;
+                border-radius: var(--border-radius-friendly);
+                box-shadow: var(--floating-shadow);
+
+                @media (min-width: $tablet) {
+                    transform: rotate(-4deg);
+                    transition:
+                        transform 0.5s var(--cubic-normal),
+                        box-shadow 0.5s ease;
+                    will-change: transform;
+                    animation: slideInPhoto var(--time-slow) var(--cubic-normal) both;
+                    animation-fill-mode: backwards;
+
+                    &:hover {
+                        transform: rotate(0deg) scale(1.04);
+                        box-shadow:
+                            var(--floating-shadow),
+                            0 20px 60px rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                @media (max-width: $tablet) {
+                    height: 12rem;
+                    width: 9rem;
+                    transform: rotate(-4deg);
+                }
+
+                :global(img) {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+
+            &-title {
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: 1rem;
+                margin-top: 1rem;
+
+                @media (min-width: $tablet) {
+                    animation: slideInLeft var(--time-slow) var(--cubic-normal) 100ms both;
+                }
+
+                @media (max-width: $mobile) {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                span {
+                    font-size: 4.3rem;
+                    color: transparent;
+                    background-clip: text;
+                    background-image: linear-gradient(to bottom, var(--primary-30), var(--primary-70));
+
+                    @media (max-width: $mobile) {
+                        font-size: 4rem;
+                        line-height: 1.2;
+                    }
+                }
+            }
+            &-subtitle {
+                margin-top: 0.5rem;
+                font-family: var(--font-mono);
+                letter-spacing: -0.025em;
+                color: var(--primary-70);
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+
+                @media (min-width: $tablet) {
+                    animation: slideInLeft var(--time-slow) var(--cubic-normal) 200ms both;
+                }
+
+                @media (max-width: $mobile) {
+                    font-size: 0.8rem;
+                    line-height: 1.75rem;
+                }
+            }
+            &-buttons {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                margin-top: 1rem;
+
+                @media (min-width: $tablet) {
+                    animation: slideInLeft var(--time-slow) var(--cubic-normal) 300ms both;
+                }
+
+                @media (max-width: $mobile) {
+                    flex-direction: column;
+                    gap: 0.8rem;
+                }
+            }
+        }
+
+        &__description {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            padding-left: 2rem;
+            font-size: 1.125rem;
+            line-height: 1.625;
+            color: var(--grayscale-30);
+            border-left: 4px var(--primary-color) solid;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            @include glass-effect;
+
+            @media (min-width: $tablet) {
+                animation: slideInRight var(--time-slow) var(--cubic-normal) var(--time-slow) both;
+            }
+        }
+    }
+
+    @keyframes slideInPhoto {
+        from {
+            opacity: 0;
+            transform: translateX(-60px) rotate(-40deg);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>

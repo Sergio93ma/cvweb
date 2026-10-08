@@ -1,0 +1,78 @@
+---
+import { t, type Key, type Lang } from '../i18n';
+
+interface Props {
+    lang: Lang;
+    title: Key;
+    description?: Key;
+}
+
+const { lang, title, description } = Astro.props;
+---
+
+<div class="sectiontitle">
+    <h2 class="sectiontitle__title" data-i18n={title}>{t(lang, title)}</h2>
+    {
+        description && (
+            <div class="bottom">
+                <p class="sectiontitle__description" data-i18n={description}>
+                    {t(lang, description)}
+                </p>
+            </div>
+        )
+    }
+</div>
+
+<style lang="scss">
+    @use '../styles/tokens' as *;
+
+    .sectiontitle {
+        text-align: center;
+        animation: slide-up-fade-in 0.8s ease-out forwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 80%;
+
+        &__title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-color) 100%);
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+
+            @media (max-width: $mobile) {
+                font-size: 2rem;
+            }
+        }
+
+        .bottom {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1.5rem;
+            margin-top: 0.6rem;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                content: '';
+                width: 200px;
+                height: 3px;
+                background-color: var(--primary-color);
+            }
+        }
+
+        &__description {
+            font-size: 1.2rem;
+            color: var(--grayscale-40);
+            max-width: 50rem;
+            margin: 0 auto;
+
+            @media (max-width: $mobile) {
+                font-size: 1rem;
+            }
+        }
+    }
+</style>

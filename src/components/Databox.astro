@@ -1,0 +1,135 @@
+---
+import { databox } from '../data/databox';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="databox" id="databox">
+    <div class="databox__text">
+        <h3 class="title" data-i18n="databox.title">{t(lang, 'databox.title')}</h3>
+        <p class="description" data-i18n="databox.description">{t(lang, 'databox.description')}</p>
+        <a href="/assets/CV/CV_Sergio_Martin_2026.pdf" download class="button-solid">
+            <span data-i18n="common.downloadCV">{t(lang, 'common.downloadCV')}</span>
+            <div class="button__bg"></div>
+        </a>
+    </div>
+    <div class="databox__datas">
+        {
+            databox.map((d) => (
+                <div class="databox__datas-data">
+                    <div class="data__value">
+                        {d.before && <span class="before">{d.before}</span>}
+                        <span class="number" data-count-to={d.value}>
+                            {d.start}
+                        </span>
+                        {d.after && <span class="after">{d.after}</span>}
+                    </div>
+                    <div class="data__text" data-i18n={`databox.items.${d.id}`}>
+                        {t(lang, `databox.items.${d.id}`)}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<script>
+    import { countUpWhenVisible } from '../scripts/counters';
+
+    const section = document.getElementById('databox');
+    if (section) countUpWhenVisible(section, 0.6);
+</script>
+
+<style lang="scss">
+    @use '../styles/tokens' as *;
+
+    .databox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        background-color: var(--primary-color);
+        padding: 3rem;
+        color: var(--primary-10);
+        box-shadow: var(--floating-shadow);
+
+        @media (min-width: $tablet) {
+            @supports (animation-timeline: view()) {
+                animation: floating-enter ease-in forwards;
+                animation-timeline: view();
+                animation-range: entry 0% cover 50%;
+            }
+        }
+        @media (max-width: $tablet) {
+            padding: 2rem;
+            grid-template-columns: 1fr;
+        }
+        &__text {
+            flex: 1 0 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+
+            .title {
+                font-weight: 900;
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+            .description {
+                font-size: 1.125rem;
+                line-height: 1.625;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        &__datas {
+            flex: 1 0 50%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+
+            @media (max-width: $mobile) {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+
+            &-data {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 0.25rem;
+                border-radius: var(--border-radius);
+                background-color: rgb(255 255 255 / 0.1);
+                padding: 1.5rem;
+                backdrop-filter: blur(12px);
+
+                .data__value {
+                    font-size: 2.25rem;
+                    line-height: 2.5rem;
+                    font-weight: 900;
+                }
+                .data__text {
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--primary-30);
+                }
+            }
+        }
+    }
+
+    @keyframes floating-enter {
+        from {
+            transform: var(--floating-transform);
+        }
+        to {
+            transform: perspective(3000px) rotateX(0deg) translateZ(0px);
+        }
+    }
+</style>

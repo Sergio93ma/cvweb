@@ -1,0 +1,184 @@
+@use 'tokens' as *;
+@use 'theme';
+@use 'icons';
+
+// GENERAL
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-inter);
+    font-weight: 400;
+    color: var(--text-primary);
+    background-color: var(--background-color);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--time-fast) var(--cubic-normal);
+
+    &:hover {
+        color: var(--primary-70);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+}
+
+small {
+    font-weight: 300;
+}
+
+// Visually hidden, still announced by screen readers
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// Native buttons styled as plain text (used where Angular had clickable non-button elements)
+.button-reset {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+// BUTTONS
+.button-solid,
+.button-liquid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background-color: transparent;
+    background-image: none;
+    text-transform: none;
+    border: none;
+    appearance: button;
+    -webkit-appearance: button;
+    width: max-content;
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    transition: all var(--time-fast) var(--cubic-normal);
+
+    @media (max-width: $mobile) {
+        width: 100%;
+        text-align: center;
+    }
+}
+.button-solid {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-10);
+    color: var(--text-contrast);
+
+    span {
+        position: relative;
+        z-index: 10;
+    }
+
+    &:hover {
+        background-color: var(--primary-30);
+        color: var(--grayscale-90);
+    }
+}
+
+.button-liquid {
+    border: 1px solid var(--grayscale-60);
+    color: var(--text-primary);
+
+    &:hover {
+        background-color: var(--overbg-color-t);
+        border-color: var(--grayscale-50);
+    }
+}
+
+// COMMONS
+.light-theme {
+    .button-solid {
+        background-color: var(--primary-90);
+
+        &:hover {
+            background-color: var(--primary-70);
+        }
+    }
+    .education__item-details .detail.dates .content {
+        color: var(--secondary-70) !important;
+    }
+}
+
+// COMMON ANIMATIONS
+@keyframes slide-up-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// MYSC
+@property --anim-pct {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+}
+
+@keyframes pct-fill {
+    from {
+        --anim-pct: 0;
+    }
+    to {
+        --anim-pct: var(--value);
+    }
+}

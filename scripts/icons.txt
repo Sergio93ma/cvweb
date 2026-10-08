@@ -1,0 +1,39 @@
+# Font Awesome icons used by the site: "<style> <name>" (style: solid | regular | brands).
+# After editing, run: python scripts/subset-icons.py
+
+# Header / footer / UI
+solid code
+solid angle-down
+solid sun-bright
+solid moon
+solid lock
+solid link
+solid xmark
+solid rectangle-terminal
+solid arrow-up-right-from-square
+regular folder
+regular folder-open
+brands linkedin-in
+brands github
+
+# Projects
+solid badminton
+solid warehouse
+solid house-chimney-crack
+solid roller-coaster
+solid address-card
+
+# Skills
+brands html5
+brands sass
+brands js
+brands typescript
+brands angular
+brands react
+brands php
+brands node-js
+brands mdb
+brands docker
+brands git-alt
+brands jira
+brands figma

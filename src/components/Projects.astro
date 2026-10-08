@@ -235,6 +235,15 @@ const metricOrder: (keyof Lighthouse)[] = ['performance', 'accessibility', 'best
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
             gap: 2rem;
+            // Biggest chunk of the page: skip its style/layout until it nears the viewport.
+            // The clip margin keeps the cards' hover shadow visible despite paint containment.
+            content-visibility: auto;
+            contain-intrinsic-size: auto 1000px;
+            overflow-clip-margin: 4rem;
+
+            @media (max-width: $tablet) {
+                contain-intrinsic-size: auto 2600px;
+            }
 
             .project {
                 display: flex;
@@ -243,7 +252,8 @@ const metricOrder: (keyof Lighthouse)[] = ['performance', 'accessibility', 'best
                 border: 1px solid var(--grayscale-60);
                 border-radius: var(--border-radius);
                 overflow: hidden;
-                transition: all var(--time-slow) var(--cubic-normal);
+                transition: var(--time-slow) var(--cubic-normal);
+                transition-property: transform, border-color, box-shadow;
                 opacity: 0;
                 transform: translateY(30px);
 

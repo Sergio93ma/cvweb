@@ -152,7 +152,8 @@ const levels = [1, 2, 3, 4, 5];
                     text-transform: uppercase;
                     letter-spacing: -0.025em;
                     color: var(--grayscale-30);
-                    transition: all 350ms var(--cubic-normal);
+                    transition: 350ms var(--cubic-normal);
+                    transition-property: transform, background-color, color;
 
                     @media (min-width: $tablet) {
                         &:hover {
@@ -216,7 +217,8 @@ const levels = [1, 2, 3, 4, 5];
                         border: 1px solid var(--grayscale-70);
                         background-color: var(--grayscale-80);
                         padding: 1.5rem 1rem;
-                        transition: all var(--time-normal) var(--cubic-normal);
+                        transition: var(--time-normal) var(--cubic-normal);
+                        transition-property: flex, background-color, border-color;
 
                         @media (max-width: $tablet) {
                             padding: 1rem;

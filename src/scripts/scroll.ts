@@ -15,11 +15,12 @@ export function scrollToSection(id: string): void {
 
     const rect = target.getBoundingClientRect();
     const offset = window.innerHeight * 0.33;
+    const behavior: ScrollBehavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
     if (container) {
         const top = rect.top - container.getBoundingClientRect().top + container.scrollTop;
-        container.scrollTo({ top: top - offset, behavior: 'smooth' });
+        container.scrollTo({ top: top - offset, behavior });
     } else {
-        window.scrollTo({ top: rect.top + window.scrollY - offset, behavior: 'smooth' });
+        window.scrollTo({ top: rect.top + window.scrollY - offset, behavior });
     }
 }

@@ -136,7 +136,8 @@ const snakeUpper = (value: string) =>
                 border-left: 2px solid rgba(19, 109, 236, 0.2);
                 padding-left: 1.5rem;
                 opacity: 0;
-                transition: all 500ms var(--cubic-normal);
+                transition: 500ms var(--cubic-normal);
+                transition-property: max-height, opacity;
 
                 @media (max-width: $mobile) {
                     margin-left: 0.7rem;

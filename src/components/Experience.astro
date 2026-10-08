@@ -175,7 +175,8 @@ const years = timelineYears(experiences, now);
                     border-color: rgb(255 255 255 / 0.1);
                     background-color: var(--grayscale-70);
                     padding: 1rem 1.4rem;
-                    transition: all var(--time-fast) var(--cubic-normal);
+                    transition: var(--time-fast) var(--cubic-normal);
+                    transition-property: background-color, border-color;
                     background: linear-gradient(90deg, var(--grayscale-70) 0%, var(--grayscale-60) 100%);
                     border-left: 3px solid var(--accent);
                     clip-path: inset(0 100% 0 0);
@@ -267,7 +268,8 @@ const years = timelineYears(experiences, now);
                                 border: 1px solid rgba(19, 109, 236, 0.3);
                                 text-transform: uppercase;
                                 letter-spacing: 0.05em;
-                                transition: all 0.3s ease;
+                                transition: 0.3s ease;
+                                transition-property: background-color, border-color;
 
                                 &:hover {
                                     background: rgba(19, 109, 236, 0.25);

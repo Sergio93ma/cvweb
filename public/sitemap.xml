@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://www.sergio93ma.dev/</loc>
+        <lastmod>2026-10-08</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.sergio93ma.dev/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://www.sergio93ma.dev/es/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sergio93ma.dev/"/>
+        <image:image>
+            <image:loc>https://www.sergio93ma.dev/assets/images/profile_photo.webp</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://www.sergio93ma.dev/es/</loc>
+        <lastmod>2026-10-08</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.sergio93ma.dev/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://www.sergio93ma.dev/es/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sergio93ma.dev/"/>
+        <image:image>
+            <image:loc>https://www.sergio93ma.dev/assets/images/profile_photo.webp</image:loc>
+        </image:image>
+    </url>
+</urlset>

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { langPath, t } from '../i18n';
+
+const lang = 'en';
+---
+
+<Base lang={lang} indexable={false}>
+    <main class="notfound">
+        <p class="notfound__code">404</p>
+        <h1 class="notfound__title" data-i18n="notFound.title">{t(lang, 'notFound.title')}</h1>
+        <p class="notfound__text" data-i18n="notFound.text">{t(lang, 'notFound.text')}</p>
+        <a class="button-solid" href={langPath[lang]} data-i18n-home>
+            <span data-i18n="notFound.back">{t(lang, 'notFound.back')}</span>
+        </a>
+    </main>
+</Base>
+
+<script>
+    // Language follows the saved/browser preference (applied by the layout); keep the link on the same language.
+    const link = document.querySelector<HTMLAnchorElement>('[data-i18n-home]');
+    if (link && document.documentElement.lang === 'es') link.href = '/es/';
+</script>
+
+<style lang="scss">
+    .notfound {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+        text-align: center;
+
+        &__code {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            color: var(--primary-70);
+        }
+        &__title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-color) 100%);
+            background-clip: text;
+            color: transparent;
+        }
+        &__text {
+            color: var(--grayscale-30);
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+    }
+</style>

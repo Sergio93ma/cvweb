@@ -1,0 +1,24 @@
+---
+import type { YearMonth } from '../data/types';
+import { t, type Lang } from '../i18n';
+
+interface Props {
+    lang: Lang;
+    start: YearMonth;
+    end?: YearMonth;
+}
+
+const { lang, start, end } = Astro.props;
+const month = (d: YearMonth) => `months.${d.month - 1}`;
+---
+
+<span data-i18n={month(start)}>{t(lang, month(start))}</span>{` ${start.year} — `}{
+    end ? (
+        <>
+            <span data-i18n={month(end)}>{t(lang, month(end))}</span>
+            {` ${end.year}`}
+        </>
+    ) : (
+        <span data-i18n="experience.present">{t(lang, 'experience.present')}</span>
+    )
+}

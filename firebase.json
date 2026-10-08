@@ -1,17 +1,8 @@
 {
   "hosting": {
-    "public": "dist/cvweb-front/browser",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "cleanUrls": true,
     "redirects": [
       {
         "source": "/cv",
@@ -31,68 +22,22 @@
     ],
     "headers": [
       {
-        "source": "/index.html",
+        "source": "**",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=3600, must-revalidate"
-          },
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "SAMEORIGIN"
-          },
-          {
-            "key": "X-XSS-Protection",
-            "value": "1; mode=block"
-          },
-          {
-            "key": "Referrer-Policy",
-            "value": "strict-origin-when-cross-origin"
-          }
+          { "key": "Cache-Control", "value": "max-age=3600, must-revalidate" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+          { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
         ]
       },
       {
-        "source": "/**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=3600, must-revalidate"
-          },
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "SAMEORIGIN"
-          },
-          {
-            "key": "X-XSS-Protection",
-            "value": "1; mode=block"
-          }
-        ]
+        "source": "**/*.@(jpg|jpeg|gif|png|webp|avif|ico|svg|pdf)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=86400, public" }]
       },
       {
-        "source": "**/*.@(js|css|woff|woff2|ttf|eot)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000, immutable"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(jpg|jpeg|gif|png|webp|ico|svg)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=86400, public"
-          }
-        ]
+        "source": "/_astro/**",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=31536000, immutable" }]
       }
     ]
   }

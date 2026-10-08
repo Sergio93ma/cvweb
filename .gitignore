@@ -14,11 +14,18 @@ pnpm-debug.log*
 
 
 # environment variables
-.env
-.env.production
+.env*
+!.env.example
 
-# macOS-specific files
+# OS files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# editor: share only the project recommendations
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 
 # jetbrains setting folder
 .idea/
@@ -27,6 +34,12 @@ pnpm-debug.log*
 .firebase/
 firebase-debug.log
 .firebaserc
+*-debug.log
+
+# credentials (service account keys never live in the repo)
+*service-account*.json
+*.pem
+*.key
 
 # Private (public repo): AI agent config, never committed
 CLAUDE.md

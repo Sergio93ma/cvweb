@@ -38,8 +38,10 @@ const { lang } = Astro.props;
     @use '../styles/tokens' as *;
 
     .container {
-        max-width: 1280px;
-        padding: 6rem 0 15rem;
+        // 1280px of content plus side padding: below ~1440px the content never touches
+        // the viewport edges (fixed footer, year axis overhang)
+        max-width: calc(1280px + 10rem);
+        padding: 6rem 5rem 15rem;
         margin: auto;
         position: relative;
         display: flex;

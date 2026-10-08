@@ -175,7 +175,7 @@ const levels = [1, 2, 3, 4, 5];
 
                     .category__skills {
                         opacity: 1;
-                        transform: translateX(0) scaleX(1);
+                        transform: scaleX(1);
 
                         .skill {
                             &__progress {
@@ -197,7 +197,9 @@ const levels = [1, 2, 3, 4, 5];
                     flex-direction: column;
                     gap: 0.2rem;
                     opacity: 0;
-                    transform: translateX(100%) scaleX(0);
+                    // Grows from its right edge: never sticks out of the container (no horizontal scroll)
+                    transform-origin: right center;
+                    transform: scaleX(0);
                     transition: var(--time-normal) var(--cubic-normal);
                     transition-property: transform, opacity;
 

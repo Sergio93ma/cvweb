@@ -12,6 +12,7 @@ export const projects: Project[] = [
             lighthouse: { performance: 66, accessibility: 87, bestPractices: 77, SEO: 77 },
             webVitals: { lcp: 1.6, cls: 0.07, fcp: 1.1 },
             load: { domContentLoaded: 730, total: 1750 },
+            agentic: { passed: 1, total: 3 },
         },
     },
     {
@@ -53,15 +54,16 @@ export const projects: Project[] = [
     {
         id: 'cvweb',
         icon: 'fa-solid fa-address-card',
-        technologies: ['Angular', 'Firebase'],
+        technologies: ['Astro', 'TypeScript', 'SASS', 'Firebase'],
         company: 'Freelance',
         type: 'public',
         url: 'https://sergio93ma.dev/',
         github: 'https://github.com/Sergio93ma/cvweb',
         metrics: {
-            lighthouse: { performance: 92, accessibility: 91, bestPractices: 100, SEO: 100 },
-            webVitals: { fcp: 0.7, lcp: 0.9, cls: 0.151 },
-            load: { domContentLoaded: 399, total: 1300 },
+            lighthouse: { performance: 100, accessibility: 100, bestPractices: 100, SEO: 100 },
+            webVitals: { fcp: 0.4, lcp: 0.4, cls: 0 },
+            load: { total: 624 },
+            agentic: { passed: 2, total: 2 },
         },
     },
 ];

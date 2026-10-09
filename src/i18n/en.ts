@@ -34,7 +34,7 @@ export const en = {
         senior_frontend_developer: 'SENIOR_FRONTEND_DEVELOPER',
         viewProjects: 'View Selected Projects',
         description1: 'Frontend developer with more than 10 years of experience, but previously designed buildings. Studied Architecture, which taught me to design with aesthetic judgment, to care about every visual detail, and to understand that what you see matters just as much as what lies behind it. When I discovered web development, everything clicked: I had been programming for years because I enjoyed creating with logic and building things that solved real problems. Bringing those two ways of thinking together is what defines how I work today.',
-        description2: 'Currently a Senior Frontend Developer specialized in Angular and TypeScript at Serbatic, developing with AEM for international clients and leading a frontend team. Care as much about clean code as about the final product making sense to the user. When code is well written, it shows: pages load faster, scale better, and are much easier to maintain.',
+        description2: 'Currently a Senior Frontend Developer specialized in Angular and TypeScript at Accenture, developing with AEM for international clients, with experience leading a frontend team. Care as much about clean code as about the final product making sense to the user. When code is well written, it shows: pages load faster, scale better, and are much easier to maintain.',
         description3: 'Looking for teams where things are built with intention, where there is real learning, and where frontend is treated with the same level of seriousness as the rest of the product.',
         profilePhoto: 'Sergio Martín Alonso - Senior Frontend Developer',
     },
@@ -204,6 +204,15 @@ export const en = {
                     'Used Git for version control and team collaboration across multiple concurrent workstreams.',
                 ],
             },
+            'frontend-accenture': {
+                title: 'Frontend Developer',
+                company: 'Accenture',
+                location: 'Madrid, Spain',
+                items: [
+                    'Frontend development and maintenance with Angular on Adobe Experience Manager (AEM) for enterprise clients.',
+                    'Component integration, publication lifecycle and production incident resolution within Agile teams.',
+                ],
+            },
         },
     },
     education: {
@@ -241,6 +250,7 @@ export const en = {
             accessibility: 'Accessibility',
             bestPractices: 'BestPractices',
             SEO: 'SEO',
+            agentic: 'Agentic browsing',
         },
         items: {
             cdbv: {
@@ -265,8 +275,8 @@ export const en = {
             },
             cvweb: {
                 title: 'This Website — Interactive CV',
-                summary: 'Personal portfolio and CV built in Angular, conceived as a showcase of frontend capabilities: design, animation, i18n and clean architecture.',
-                description: '<p>More than a CV, this website is itself a <strong>technical and creative project</strong>. Fully designed and developed by me, it aims to demonstrate a range of modern frontend skills.</p><ul><li>Built in <strong>Angular</strong> with a modular architecture and clean code principles.</li><li>Hosted on <strong>Firebase Hosting</strong> for fast, cost-effective deployment.</li><li><strong>Multilingual (i18n)</strong> support with Spanish and English translations.</li><li>Custom visual design with careful attention to typography, animations and composition.</li></ul><p>Each section of the site is an opportunity to explore different techniques — from reusable components and state management to visual effects and user experience details.</p>',
+                summary: 'Personal portfolio and CV built in Astro, conceived as a showcase of frontend capabilities: performance, accessibility, design, i18n and clean architecture.',
+                description: '<p>More than a CV, this website is itself a <strong>technical and creative project</strong>. Fully designed and developed by me, it aims to demonstrate a range of modern frontend skills.</p><ul><li>Built in <strong>Astro</strong> as a static site: no UI framework, minimal vanilla TypeScript and clean code principles.</li><li>Perfect <strong>100/100 Lighthouse</strong> scores in performance, accessibility, best practices and SEO.</li><li>Hosted on <strong>Firebase Hosting</strong> for fast, cost-effective deployment.</li><li><strong>Multilingual (i18n)</strong> support with Spanish and English translations.</li><li>Custom visual design with careful attention to typography, animations and composition.</li></ul><p>Each section of the site is an opportunity to explore different techniques — from reusable components and state management to visual effects and user experience details.</p>',
             },
         },
     },

@@ -35,7 +35,7 @@ export const es: Dict = {
         senior_frontend_developer: 'DESARROLLADOR_SENIOR_FRONTEND',
         viewProjects: 'Ver Proyectos Seleccionados',
         description1: 'Soy desarrollador frontend con más de 10 años de experiencia, pero antes diseñaba edificios. Estudié Arquitectura, y eso me enseñó a diseñar con criterio estético, a cuidar cada detalle visual y a entender que lo que se ve importa tanto como lo que hay detrás. Cuando descubrí el desarrollo web, todo encajó: llevaba años programando porque me gustaba crear con lógica y construir cosas que resolvieran problemas reales. Unir esas dos formas de pensar es lo que define cómo trabajo hoy.',
-        description2: 'Actualmente soy Senior Frontend Developer especializado en Angular y TypeScript en Serbatic, desarrollando con AEM para clientes internacionales y liderando un equipo de frontend. Me importa tanto que el código sea limpio como que el producto final tenga sentido para quien lo usa. Cuando el código está bien escrito, se nota: las páginas cargan más rápido, escalan mejor y son mucho más fáciles de mantener.',
+        description2: 'Actualmente soy Senior Frontend Developer especializado en Angular y TypeScript en Accenture, desarrollando con AEM para clientes internacionales y con experiencia liderando un equipo de frontend. Me importa tanto que el código sea limpio como que el producto final tenga sentido para quien lo usa. Cuando el código está bien escrito, se nota: las páginas cargan más rápido, escalan mejor y son mucho más fáciles de mantener.',
         description3: 'Busco equipos donde se construya con criterio, se aprenda de verdad y el frontend se trate con la misma seriedad que el resto del producto.',
         profilePhoto: 'Sergio Martín Alonso - Desarrollador Senior Frontend',
     },
@@ -172,6 +172,7 @@ export const es: Dict = {
     experience: {
         title: 'Trayectoria Profesional',
         present: 'Actualidad',
+        close: 'Cerrar detalles',
         items: {
             'personal-projects': {
                 title: 'Proyectos Personales',
@@ -203,6 +204,15 @@ export const es: Dict = {
                     'Liderazgo de equipo frontend en proyectos de gran escala, garantizando calidad de entrega y código.',
                     'Aplicación de metodologías ágiles (Scrum y Kanban) en flujos de trabajo colaborativos y multidisciplinares.',
                     'Control de versiones y trabajo en equipo con Git en múltiples líneas de desarrollo simultáneas.',
+                ],
+            },
+            'frontend-accenture': {
+                title: 'Desarrollador Frontend',
+                company: 'Accenture',
+                location: 'Madrid, España',
+                items: [
+                    'Desarrollo y mantenimiento frontend con Angular sobre Adobe Experience Manager (AEM) para clientes corporativos.',
+                    'Integración de componentes, ciclo de publicación y resolución de incidencias en producción dentro de equipos ágiles.',
                 ],
             },
         },
@@ -242,6 +252,7 @@ export const es: Dict = {
             accessibility: 'Accessibility',
             bestPractices: 'BestPractices',
             SEO: 'SEO',
+            agentic: 'Agentic browsing',
         },
         items: {
             cdbv: {
@@ -266,8 +277,8 @@ export const es: Dict = {
             },
             cvweb: {
                 title: 'Esta web — CV Interactivo',
-                summary: 'Portfolio y CV personal desarrollado en Angular, concebido como un escaparate de capacidades frontend: diseño, animación, i18n y arquitectura limpia.',
-                description: '<p>Más que un CV, esta web es en sí misma un <strong>proyecto técnico y creativo</strong>. Diseñada y desarrollada íntegramente por mí, tiene como objetivo demostrar distintas capacidades del desarrollo frontend moderno.</p><ul><li>Desarrollada en <strong>Angular</strong> con arquitectura modular y código limpio.</li><li>Alojada en <strong>Firebase Hosting</strong> para un despliegue ágil y económico.</li><li>Soporte <strong>multiidioma (i18n)</strong> con traducciones en español e inglés.</li><li>Diseño visual propio, con atención al detalle tipográfico, animaciones y composición.</li></ul><p>Cada sección de la web es una oportunidad para explorar diferentes técnicas: desde componentes reutilizables hasta efectos visuales, pasando por la gestión de estado y la experiencia de usuario.</p>',
+                summary: 'Portfolio y CV personal desarrollado en Astro, concebido como un escaparate de capacidades frontend: rendimiento, accesibilidad, diseño, i18n y arquitectura limpia.',
+                description: '<p>Más que un CV, esta web es en sí misma un <strong>proyecto técnico y creativo</strong>. Diseñada y desarrollada íntegramente por mí, tiene como objetivo demostrar distintas capacidades del desarrollo frontend moderno.</p><ul><li>Desarrollada en <strong>Astro</strong> como web estática: sin framework de UI, TypeScript vanilla mínimo y código limpio.</li><li>Puntuación perfecta de <strong>100/100 en Lighthouse</strong> en rendimiento, accesibilidad, buenas prácticas y SEO.</li><li>Alojada en <strong>Firebase Hosting</strong> para un despliegue ágil y económico.</li><li>Soporte <strong>multiidioma (i18n)</strong> con traducciones en español e inglés.</li><li>Diseño visual propio, con atención al detalle tipográfico, animaciones y composición.</li></ul><p>Cada sección de la web es una oportunidad para explorar diferentes técnicas: desde componentes reutilizables hasta efectos visuales, pasando por la gestión de estado y la experiencia de usuario.</p>',
             },
         },
     },

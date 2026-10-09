@@ -60,6 +60,8 @@ export interface Project {
     metrics?: {
         lighthouse?: Lighthouse;
         webVitals?: { lcp?: number; fcp?: number; cls?: number; tbt?: number; ttfb?: number };
-        load?: { domContentLoaded: number; total: number };
+        load?: { domContentLoaded?: number; total: number };
+        /** Lighthouse "Agentic browsing" category: a pass ratio, not a 0–100 score */
+        agentic?: { passed: number; total: number };
     };
 }

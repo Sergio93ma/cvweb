@@ -130,6 +130,21 @@ const metricOrder: (keyof Lighthouse)[] = ['performance', 'accessibility', 'best
                                                 </span>
                                             </div>
                                         ))}
+                                        {p.metrics.agentic && (
+                                            <div class="metric">
+                                                <div
+                                                    class="metric__spinner"
+                                                    style={`--value: ${Math.round((p.metrics.agentic.passed / p.metrics.agentic.total) * 100)}`}
+                                                >
+                                                    <span class="metric__spinner-label">
+                                                        {p.metrics.agentic.passed}/{p.metrics.agentic.total}
+                                                    </span>
+                                                </div>
+                                                <span class="metric__text" data-i18n="projects.metrics.agentic">
+                                                    {t(lang, 'projects.metrics.agentic')}
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             )}

@@ -172,6 +172,7 @@ export const es: Dict = {
     experience: {
         title: 'Trayectoria Profesional',
         present: 'Actualidad',
+        close: 'Cerrar detalles',
         items: {
             'personal-projects': {
                 title: 'Proyectos Personales',

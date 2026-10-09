@@ -171,6 +171,7 @@ export const en = {
     experience: {
         title: 'Career Timeline',
         present: 'Present',
+        close: 'Close details',
         items: {
             'personal-projects': {
                 title: 'Personal Projects',
